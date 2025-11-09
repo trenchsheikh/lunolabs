@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test FormSubmit</title>
+</head>
+<body>
+    <h1>Test Form for FormSubmit</h1>
+    <form action="https://formsubmit.co/samitahir018@gmail.com" method="POST">
+        <input type="text" name="name" placeholder="Name" required><br><br>
+        <input type="email" name="email" placeholder="Email" required><br><br>
+        <textarea name="message" placeholder="Message" required></textarea><br><br>
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="Test from HTML form">
+        <button type="submit">Send Test</button>
+    </form>
+    
+    <script>
+        console.log('Test form loaded');
+    </script>
+</body>
+</html>
+

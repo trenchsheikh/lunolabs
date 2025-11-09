@@ -55,6 +55,14 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        luno: {
+          green: {
+            dark: "#2FA86B",
+            light: "#2FA86B",
+          },
+          cream: "#F3EFE5",
+          ink: "#0B1B16",
+        },
       },
       borderRadius: {
         xl: "calc(var(--radius) + 4px)",

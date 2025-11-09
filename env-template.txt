@@ -1,0 +1,3 @@
+EMAIL_USER=samitahir018@gmail.com
+EMAIL_PASSWORD=your-app-password-here
+

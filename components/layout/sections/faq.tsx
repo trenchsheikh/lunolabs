@@ -13,33 +13,28 @@ interface FAQProps {
 
 const FAQList: FAQProps[] = [
   {
-    question: "Is this template free?",
-    answer: "Yes. It is a free NextJS Shadcn template.",
+    question: "Do you share pricing?",
+    answer:
+      "We scope every project—reach out for a proposal tailored to your goals and timeline. Every build is unique, so we provide custom quotes after understanding your specific needs.",
     value: "item-1",
   },
   {
-    question: "Duis aute irure dolor in reprehenderit in voluptate velit?",
+    question: "What stacks do you use?",
     answer:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint labore quidem quam consectetur sapiente, iste rerum reiciendis animi nihil nostrum sit quo, modi quod.",
+      "Modern web (React/Next, TypeScript), mobile (React Native/Expo), on chain tooling across EVM/Solana/others, and agentic AI with MCP. We choose the best tools for your specific use case.",
     value: "item-2",
   },
   {
-    question:
-      "Lorem ipsum dolor sit amet Consectetur natus dolor minus quibusdam?",
+    question: "How fast can we start?",
     answer:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore qui nostrum reiciendis veritatis.",
+      "We move quickly—after scoping, we can typically begin within a few days. Once we understand your requirements, we'll set up the project, establish milestones, and start building.",
     value: "item-3",
   },
   {
-    question: "Excepteur sint occaecat cupidata non proident sunt?",
-    answer: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    question: "Do you work with non crypto products?",
+    answer:
+      "Yes—roughly half our builds are traditional web apps and mobile products. We're equally comfortable building fintech apps, education platforms, dashboards, or any production grade software.",
     value: "item-4",
-  },
-  {
-    question:
-      "Enim ad minim veniam, quis nostrud exercitation ullamco laboris?",
-    answer: "consectetur adipisicing elit. Sint labore.",
-    value: "item-5",
   },
 ];
 

@@ -2,58 +2,56 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Icon } from "@/components/ui/icon";
 import { icons } from "lucide-react";
 
-interface BenefitsProps {
+interface ProcessProps {
   icon: string;
   title: string;
   description: string;
 }
 
-const benefitList: BenefitsProps[] = [
+const processList: ProcessProps[] = [
   {
-    icon: "Blocks",
-    title: "Build Brand Trust",
+    icon: "ClipboardList",
+    title: "Scope & Plan",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio velit cum aliquam. Natus consectetur dolores.",
+      "Rapid scoping, milestones, and success metrics defined upfront.",
   },
   {
-    icon: "LineChart",
-    title: "More Leads",
+    icon: "Code",
+    title: "Build & Validate",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio velit cum aliquam, natus consectetur.",
+      "Tight feedback loops, staging links, and measurable progress every step.",
   },
   {
-    icon: "Wallet",
-    title: "Higher Conversions",
+    icon: "Rocket",
+    title: "Ship & Monitor",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus consectetur. A odio velit cum aliquam",
+      "Production deploy with analytics, error monitoring, and performance tracking.",
   },
   {
-    icon: "Sparkle",
-    title: "Test Marketing Ideas",
+    icon: "FileText",
+    title: "Handover & Support",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio velit cum aliquam. Natus consectetur dolores.",
+      "Complete documentation, runbooks, and optional retainer for ongoing support.",
   },
 ];
 
 export const BenefitsSection = () => {
   return (
-    <section id="benefits" className="container py-24 sm:py-32">
+    <section id="process" className="container py-24 sm:py-32">
       <div className="grid lg:grid-cols-2 place-items-center lg:gap-24">
         <div>
-          <h2 className="text-lg text-primary mb-2 tracking-wider">Benefits</h2>
+          <h2 className="text-lg text-primary mb-2 tracking-wider">Process</h2>
 
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Your Shortcut to Success
+            How we work
           </h2>
           <p className="text-xl text-muted-foreground mb-8">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non
-            ducimus reprehenderit architecto rerum similique facere odit
-            deleniti necessitatibus quo quae.
+            A proven workflow from discovery to delivery, ensuring transparency, speed, and quality at every stage.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-4 w-full">
-          {benefitList.map(({ icon, title, description }, index) => (
+          {processList.map(({ icon, title, description }, index) => (
             <Card
               key={title}
               className="bg-muted/50 dark:bg-card hover:bg-background transition-all delay-75 group/number"
