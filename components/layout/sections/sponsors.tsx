@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import {
   Marquee,
   MarqueeContent,
@@ -68,9 +69,11 @@ export const SponsorsSection = () => {
             <MarqueeItem key={name} className="flex items-center justify-center">
               <div className="flex items-center justify-center h-20 md:h-24 w-32 md:w-40 rounded-lg border bg-card hover:bg-accent/50 transition-colors px-4">
                 {typeof logo === 'string' ? (
-                  <img 
+                  <Image 
                     src={logo} 
                     alt={`${name} logo`} 
+                    width={40}
+                    height={40}
                     className="h-8 md:h-10 w-auto object-contain dark:invert"
                   />
                 ) : (

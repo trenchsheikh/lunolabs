@@ -116,7 +116,7 @@ export const ContactSection = () => {
             <h2 className="text-3xl md:text-4xl font-bold">Ready to launch?</h2>
           </div>
           <p className="mb-8 text-muted-foreground lg:w-5/6">
-            Tell us about your build. We'll respond with a plan and timeline.
+            Tell us about your build. We&apos;ll respond with a plan and timeline.
           </p>
 
           <div className="flex flex-col gap-4">

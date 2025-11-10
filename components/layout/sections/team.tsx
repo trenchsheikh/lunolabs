@@ -1,3 +1,4 @@
+import Image from "next/image";
 import TelegramIcon from "@/components/icons/telegram-icon";
 import LinkedInIcon from "@/components/icons/linkedin-icon";
 import XIcon from "@/components/icons/x-icon";
@@ -65,9 +66,11 @@ export const TeamSection = () => {
           <CardHeader className="text-center">
             <div className="flex justify-center mb-4">
               <div className="w-48 h-64 rounded-lg overflow-hidden border-2 border-primary/20">
-                <img 
+                <Image 
                   src="/sami.jpg" 
                   alt="Sami Tahir"
+                  width={192}
+                  height={256}
                   className="w-full h-full object-cover"
                   style={{ objectPosition: '50% 35%' }}
                 />
