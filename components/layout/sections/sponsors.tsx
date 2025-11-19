@@ -72,9 +72,10 @@ export const SponsorsSection = () => {
                   <Image 
                     src={logo} 
                     alt={`${name} logo`} 
-                    width={40}
-                    height={40}
+                    width={80}
+                    height={80}
                     className="h-8 md:h-10 w-auto object-contain dark:invert"
+                    unoptimized
                   />
                 ) : (
                   logo
