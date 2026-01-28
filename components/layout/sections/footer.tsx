@@ -1,5 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
+import Image from "next/image";
 import GithubIcon from "@/components/icons/github-icon";
 import LinkedInIcon from "@/components/icons/linkedin-icon";
 import XIcon from "@/components/icons/x-icon";
@@ -13,13 +14,16 @@ export const FooterSection = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-x-12 gap-y-8">
           <div className="col-span-full md:col-span-2">
             <Link href="/" className="flex font-bold items-center mb-4">
-              <h3 className="text-2xl font-semibold">
-                <span className="text-luno-green-dark">Luno</span>
-                <span className="text-luno-green-light">Labs</span>
-              </h3>
+              <Image
+                src="/Luno-logo.png"
+                alt="Luno Labs"
+                width={200}
+                height={60}
+                className="h-16 w-auto"
+              />
             </Link>
             <p className="text-sm text-muted-foreground max-w-xs">
-              Specialist builders for Web2 and Web3. We ship production apps, mobile, token launches, and agentic AI—fast and right.
+              Specialist builders for Web2 and Web3. We ship production apps, mobile, token launches, and agentic AI fast and right.
             </p>
           </div>
 

@@ -28,7 +28,7 @@ export const HeroSection = () => {
           </div>
 
           <p className="max-w-screen-sm mx-auto text-xl text-muted-foreground">
-            {`We're a team of specialist builders for Web2 and Web3—shipping production grade apps, sites, and token launches end to end. From idea to live product, we handle build, security, and deployment.`}
+            {`We're a team of specialist builders for Web2 and Web3 shipping production grade apps, sites, and token launches end to end. From idea to live product, we handle build, security, and deployment.`}
           </p>
 
           <div className="space-y-4 md:space-y-0 md:space-x-4">

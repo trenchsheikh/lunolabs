@@ -3,13 +3,12 @@ import TelegramIcon from "@/components/icons/telegram-icon";
 import LinkedInIcon from "@/components/icons/linkedin-icon";
 import XIcon from "@/components/icons/x-icon";
 import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardFooter,
+    Card,
+    CardContent,
+    CardHeader,
+    CardTitle,
+    CardFooter,
 } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
 
 interface SocialNetworkProps {
@@ -83,7 +82,7 @@ export const TeamSection = () => {
           </CardHeader>
 
           <CardContent className="text-center text-muted-foreground space-y-2">
-            <p>Ex-IBM</p>
+            <p>Ex IBM</p>
             <p>Led AI education initiative at Google HQ</p>
             <p>Built production agentic payment systems with stablecoins at 0em Labs</p>
             <p>Delivered 3 successful token launches exceeding $5M+ in total value</p>

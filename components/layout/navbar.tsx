@@ -2,21 +2,18 @@
 import { Menu } from "lucide-react";
 import React from "react";
 import {
-  Sheet,
-  SheetContent,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
+    Sheet,
+    SheetContent,
+    SheetFooter,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
 } from "../ui/sheet";
 import { Separator } from "../ui/separator";
 import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
+    NavigationMenu, NavigationMenuItem,
+    NavigationMenuLink,
+    NavigationMenuList
 } from "../ui/navigation-menu";
 import { Button } from "../ui/button";
 import Link from "next/link";
@@ -74,10 +71,15 @@ const featureList: FeatureProps[] = [
 export const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   return (
-    <header className="shadow-inner bg-opacity-15 w-[90%] md:w-[70%] lg:w-[75%] lg:max-w-screen-xl top-5 mx-auto sticky border border-secondary z-40 rounded-2xl flex justify-between items-center p-2 bg-card">
-      <Link href="/" className="font-bold flex items-center">
-        <span className="text-luno-green-dark text-3xl font-semibold">Luno</span>
-        <span className="text-luno-green-light text-3xl font-semibold">Labs</span>
+    <header className="shadow-lg backdrop-blur-md bg-card/70 w-[95%] md:w-[80%] lg:w-[85%] lg:max-w-screen-xl top-6 mx-auto sticky border border-secondary/50 z-40 rounded-full flex justify-between items-center px-4 py-0">
+      <Link href="/" className="font-bold flex items-center shrink-0">
+          <Image
+            src="/Luno-logo.png"
+            alt="Luno Labs"
+            width={200}
+            height={64}
+            className="h-16 w-auto relative top-1"
+          />
       </Link>
       {/* <!-- Mobile --> */}
       <div className="flex items-center lg:hidden">
@@ -97,8 +99,13 @@ export const Navbar = () => {
               <SheetHeader className="mb-4 ml-4">
                 <SheetTitle className="flex items-center">
                   <Link href="/" className="flex items-center">
-                    <span className="text-luno-green-dark text-3xl font-semibold">Luno</span>
-                    <span className="text-luno-green-light text-3xl font-semibold">Labs</span>
+                    <Image
+                      src="/Luno-logo.png"
+                      alt="Luno Labs"
+                      width={180}
+                      height={56}
+                      className="h-12 w-auto"
+                    />
                   </Link>
                 </SheetTitle>
               </SheetHeader>
@@ -133,7 +140,7 @@ export const Navbar = () => {
           <NavigationMenuItem>
             {routeList.map(({ href, label }) => (
               <NavigationMenuLink key={href} asChild>
-                <Link href={href} className="text-base px-2 font-semibold">
+                <Link href={href} className="text-base px-3 font-semibold hover:text-primary transition-colors">
                   {label}
                 </Link>
               </NavigationMenuLink>
@@ -145,7 +152,7 @@ export const Navbar = () => {
       <div className="hidden lg:flex">
         <ToggleTheme />
 
-        <Button asChild size="sm" className="font-semibold">
+        <Button asChild size="sm" className="font-semibold rounded-full px-6">
           <Link href="#contact">
             Get Started
           </Link>

@@ -1,8 +1,8 @@
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
 } from "@/components/ui/accordion";
 
 interface FAQProps {
@@ -15,7 +15,7 @@ const FAQList: FAQProps[] = [
   {
     question: "Do you share pricing?",
     answer:
-      "We scope every project—reach out for a proposal tailored to your goals and timeline. Every build is unique, so we provide custom quotes after understanding your specific needs.",
+      "We scope every project. Reach out for a proposal tailored to your goals and timeline. Every build is unique, so we provide custom quotes after understanding your specific needs.",
     value: "item-1",
   },
   {
@@ -27,13 +27,13 @@ const FAQList: FAQProps[] = [
   {
     question: "How fast can we start?",
     answer:
-      "We move quickly—after scoping, we can typically begin within a few days. Once we understand your requirements, we'll set up the project, establish milestones, and start building.",
+      "We move quickly. After scoping, we can typically begin within a few days. Once we understand your requirements, we'll set up the project, establish milestones, and start building.",
     value: "item-3",
   },
   {
     question: "Do you work with non crypto products?",
     answer:
-      "Yes—roughly half our builds are traditional web apps and mobile products. We're equally comfortable building fintech apps, education platforms, dashboards, or any production grade software.",
+      "Yes. Roughly half our builds are traditional web apps and mobile products. We're equally comfortable building fintech apps, education platforms, dashboards, or any production grade software.",
     value: "item-4",
   },
 ];
