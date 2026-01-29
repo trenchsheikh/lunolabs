@@ -1,31 +1,25 @@
 "use client";
 import { useState } from "react";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from "@/components/ui/card";
-import { Clock } from "lucide-react";
+import { CheckCircle2, Clock } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -40,6 +34,7 @@ const formSchema = z.object({
 
 export const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -89,11 +84,11 @@ export const ContactSection = () => {
       console.log('Response body:', responseText);
 
       if (response.ok) {
-        alert('Thank you! Your message has been sent successfully. Check samitahir018@gmail.com for the activation email (first time only), then all future submissions will arrive instantly!');
+        setIsSubmitted(true);
         form.reset();
       } else {
         console.error('❌ Failed - Status:', response.status);
-        alert(`Response status: ${response.status}. Check the console for details.`);
+        alert(`Something went wrong. Please try again or contact us directly.`);
       }
     } catch (error) {
       console.error('❌ ERROR:', error);
@@ -136,152 +131,169 @@ export const ContactSection = () => {
         <Card className="bg-muted/60 dark:bg-card">
           <CardHeader className="text-primary text-2xl"> </CardHeader>
           <CardContent>
-            <Form {...form}>
-              <form
-                onSubmit={form.handleSubmit(onSubmit)}
-                className="grid w-full gap-4"
-              >
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Name *</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Your name" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Email *</FormLabel>
-                      <FormControl>
-                        <Input
-                          type="email"
-                          placeholder="you@company.com"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="company"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Company</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Your company" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="projectType"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Project Type *</FormLabel>
-                      <Select
-                        onValueChange={field.onChange}
-                        defaultValue={field.value}
-                      >
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select project type" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value="Web App">Web App</SelectItem>
-                          <SelectItem value="Mobile App (iOS/Android)">Mobile App (iOS/Android)</SelectItem>
-                          <SelectItem value="SaaS Application">SaaS Application</SelectItem>
-                          <SelectItem value="E-commerce Platform">E-commerce Platform</SelectItem>
-                          <SelectItem value="Landing Page">Landing Page</SelectItem>
-                          <SelectItem value="Portfolio Website">Portfolio Website</SelectItem>
-                          <SelectItem value="Corporate Website">Corporate Website</SelectItem>
-                          <SelectItem value="Dashboard/Analytics Tool">Dashboard/Analytics Tool</SelectItem>
-                          <SelectItem value="API Development">API Development</SelectItem>
-                          <SelectItem value="CRM System">CRM System</SelectItem>
-                          <SelectItem value="Marketplace Platform">Marketplace Platform</SelectItem>
-                          <SelectItem value="Social Media Platform">Social Media Platform</SelectItem>
-                          <SelectItem value="Booking/Scheduling System">Booking/Scheduling System</SelectItem>
-                          <SelectItem value="Payment Integration">Payment Integration</SelectItem>
-                          <SelectItem value="Chrome Extension">Chrome Extension</SelectItem>
-                          <SelectItem value="Desktop Application">Desktop Application</SelectItem>
-                          <SelectItem value="Agentic AI">Agentic AI</SelectItem>
-                          <SelectItem value="AI Chatbot">AI Chatbot</SelectItem>
-                          <SelectItem value="Machine Learning Model">Machine Learning Model</SelectItem>
-                          <SelectItem value="Automation Tool">Automation Tool</SelectItem>
-                          <SelectItem value="Trading Bot">Trading Bot</SelectItem>
-                          <SelectItem value="Token Launch">Token Launch</SelectItem>
-                          <SelectItem value="NFT Marketplace">NFT Marketplace</SelectItem>
-                          <SelectItem value="DeFi Platform">DeFi Platform</SelectItem>
-                          <SelectItem value="Smart Contracts">Smart Contracts</SelectItem>
-                          <SelectItem value="Blockchain/Web3 Project">Blockchain/Web3 Project</SelectItem>
-                          <SelectItem value="Game Development">Game Development</SelectItem>
-                          <SelectItem value="IoT Application">IoT Application</SelectItem>
-                          <SelectItem value="Database Design">Database Design</SelectItem>
-                          <SelectItem value="Cloud Migration">Cloud Migration</SelectItem>
-                          <SelectItem value="DevOps/CI-CD Setup">DevOps/CI-CD Setup</SelectItem>
-                          <SelectItem value="UI/UX Design">UI/UX Design</SelectItem>
-                          <SelectItem value="Consulting">Consulting</SelectItem>
-                          <SelectItem value="Other">Other</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="timeline"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Timeline</FormLabel>
-                      <FormControl>
-                        <Input placeholder="e.g., ASAP, 2-4 weeks, flexible" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Message *</FormLabel>
-                      <FormControl>
-                        <Textarea
-                          rows={5}
-                          placeholder="Tell us about your project..."
-                          className="resize-none"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <Button className="mt-4" type="submit" disabled={isSubmitting}>
-                  {isSubmitting ? 'Sending...' : 'Request proposal'}
+            {isSubmitted ? (
+              <div className="flex flex-col items-center justify-center py-12 text-center animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <CheckCircle2 className="w-16 h-16 text-primary mb-6" />
+                <h3 className="text-2xl font-bold mb-4">Request Received</h3>
+                <p className="text-muted-foreground text-lg max-w-sm mx-auto">
+                  Thank you for your inquiry! We&apos;ve received your request and will be in touch as soon as possible to discuss your project.
+                </p>
+                <Button 
+                  variant="outline" 
+                  className="mt-8"
+                  onClick={() => setIsSubmitted(false)}
+                >
+                  Send another inquiry
                 </Button>
-              </form>
-            </Form>
+              </div>
+            ) : (
+              <Form {...form}>
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="grid w-full gap-4"
+                >
+                  <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Name *</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Your name" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Email *</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="email"
+                            placeholder="you@company.com"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="company"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Company</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Your company" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="projectType"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Project Type *</FormLabel>
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Select project type" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="Web App">Web App</SelectItem>
+                            <SelectItem value="Mobile App (iOS/Android)">Mobile App (iOS/Android)</SelectItem>
+                            <SelectItem value="SaaS Application">SaaS Application</SelectItem>
+                            <SelectItem value="E-commerce Platform">E-commerce Platform</SelectItem>
+                            <SelectItem value="Landing Page">Landing Page</SelectItem>
+                            <SelectItem value="Portfolio Website">Portfolio Website</SelectItem>
+                            <SelectItem value="Corporate Website">Corporate Website</SelectItem>
+                            <SelectItem value="Dashboard/Analytics Tool">Dashboard/Analytics Tool</SelectItem>
+                            <SelectItem value="API Development">API Development</SelectItem>
+                            <SelectItem value="CRM System">CRM System</SelectItem>
+                            <SelectItem value="Marketplace Platform">Marketplace Platform</SelectItem>
+                            <SelectItem value="Social Media Platform">Social Media Platform</SelectItem>
+                            <SelectItem value="Booking/Scheduling System">Booking/Scheduling System</SelectItem>
+                            <SelectItem value="Payment Integration">Payment Integration</SelectItem>
+                            <SelectItem value="Chrome Extension">Chrome Extension</SelectItem>
+                            <SelectItem value="Desktop Application">Desktop Application</SelectItem>
+                            <SelectItem value="Agentic AI">Agentic AI</SelectItem>
+                            <SelectItem value="AI Chatbot">AI Chatbot</SelectItem>
+                            <SelectItem value="Machine Learning Model">Machine Learning Model</SelectItem>
+                            <SelectItem value="Automation Tool">Automation Tool</SelectItem>
+                            <SelectItem value="Trading Bot">Trading Bot</SelectItem>
+                            <SelectItem value="Token Launch">Token Launch</SelectItem>
+                            <SelectItem value="NFT Marketplace">NFT Marketplace</SelectItem>
+                            <SelectItem value="DeFi Platform">DeFi Platform</SelectItem>
+                            <SelectItem value="Smart Contracts">Smart Contracts</SelectItem>
+                            <SelectItem value="Blockchain/Web3 Project">Blockchain/Web3 Project</SelectItem>
+                            <SelectItem value="Game Development">Game Development</SelectItem>
+                            <SelectItem value="IoT Application">IoT Application</SelectItem>
+                            <SelectItem value="Database Design">Database Design</SelectItem>
+                            <SelectItem value="Cloud Migration">Cloud Migration</SelectItem>
+                            <SelectItem value="DevOps/CI-CD Setup">DevOps/CI-CD Setup</SelectItem>
+                            <SelectItem value="UI/UX Design">UI/UX Design</SelectItem>
+                            <SelectItem value="Consulting">Consulting</SelectItem>
+                            <SelectItem value="Other">Other</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="timeline"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Timeline</FormLabel>
+                        <FormControl>
+                          <Input placeholder="e.g., ASAP, 2-4 weeks, flexible" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="message"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Message *</FormLabel>
+                        <FormControl>
+                          <Textarea
+                            rows={5}
+                            placeholder="Tell us about your project..."
+                            className="resize-none"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <Button className="mt-4" type="submit" disabled={isSubmitting}>
+                    {isSubmitting ? 'Sending...' : 'Request proposal'}
+                  </Button>
+                </form>
+              </Form>
+            )}
           </CardContent>
 
           <CardFooter></CardFooter>
