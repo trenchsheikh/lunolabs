@@ -6,143 +6,79 @@ html {
   scroll-behavior: smooth;
 }
 
-/* *=========== Default theme =========== */
-/* @layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-
-    --ring: 240 10% 3.9%;
-
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-
-    --ring: 240 4.9% 83.9%;
-  }
-} */
-
-/* *=========== Luno Labs Green Theme =========== */
+/* *=========== Luno Labs · Atelier Theme =========== */
 @layer base {
   :root {
-    --background: 44 44% 93%; /* Cream background */
-    --foreground: 160 30% 6%; /* Dark ink for text */
+    --cream: 44 39% 92%;       /* #F3EFE5 */
+    --cream-2: 44 35% 87%;     /* #EBE5D5 */
+    --cream-3: 44 32% 83%;     /* #E2DAC4 */
+    --ink: 160 36% 8%;         /* #0B1B16 */
+    --moss: 150 38% 17%;       /* #1A3A2A */
+    --moss-2: 150 50% 11%;     /* #0D2A1E */
+    --sprout: 150 56% 42%;     /* #2FA86B */
+    --sprout-2: 150 60% 34%;   /* #228B57 */
+    --sprout-soft: 144 53% 64%;/* #6FD49B */
+    --warm: 41 36% 67%;        /* #C8B891 */
 
-    --card: 0 0% 100%;
-    --card-foreground: 160 30% 6%;
+    --background: var(--cream);
+    --foreground: var(--ink);
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 160 30% 6%;
+    --card: 44 39% 96%;
+    --card-foreground: var(--ink);
 
-    --primary: 150 55% 41%; /* Light Green */
-    --primary-foreground: 0 0% 98%;
+    --popover: var(--cream);
+    --popover-foreground: var(--ink);
 
-    --secondary: 44 44% 93%; /* Cream */
-    --secondary-foreground: 160 30% 6%;
+    --primary: var(--moss-2);
+    --primary-foreground: var(--cream);
 
-    --muted: 44 34% 88%;
-    --muted-foreground: 160 15% 40%;
+    --secondary: var(--cream-2);
+    --secondary-foreground: var(--moss-2);
 
-    --accent: 160 56% 15%; /* Dark Green */
-    --accent-foreground: 0 0% 98%;
+    --muted: var(--cream-2);
+    --muted-foreground: 150 14% 30%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --accent: var(--sprout);
+    --accent-foreground: var(--cream);
 
-    --border: 160 20% 85%;
-    --input: 160 20% 85%;
-    --ring: 150 55% 41%;
-    --radius: 0.5rem;
+    --destructive: 0 70% 45%;
+    --destructive-foreground: var(--cream);
+
+    --border: 160 14% 84%;
+    --input: 160 14% 84%;
+    --ring: var(--sprout);
+    --radius: 0.75rem;
   }
 
   .dark {
-    --background: 160 56% 15%; /* Dark Green background */
-    --foreground: 44 44% 93%; /* Cream text */
+    --background: var(--moss-2);
+    --foreground: var(--cream);
 
-    --card: 160 50% 12%;
-    --card-foreground: 44 44% 93%;
+    --card: 150 50% 13%;
+    --card-foreground: var(--cream);
 
-    --popover: 160 56% 15%;
-    --popover-foreground: 44 44% 93%;
+    --popover: var(--moss-2);
+    --popover-foreground: var(--cream);
 
-    --primary: 150 55% 41%; /* Light Green */
-    --primary-foreground: 0 0% 98%;
+    --primary: var(--sprout);
+    --primary-foreground: var(--moss-2);
 
-    --secondary: 160 45% 20%;
-    --secondary-foreground: 44 44% 93%;
+    --secondary: 150 38% 19%;
+    --secondary-foreground: var(--cream);
 
-    --muted: 160 45% 20%;
-    --muted-foreground: 44 30% 70%;
+    --muted: 150 38% 19%;
+    --muted-foreground: 44 25% 75%;
 
-    --accent: 150 55% 41%;
-    --accent-foreground: 160 56% 15%;
+    --accent: var(--sprout);
+    --accent-foreground: var(--moss-2);
 
-    --destructive: 0 72.2% 50.6%;
-    --destructive-foreground: 44 44% 93%;
+    --destructive: 0 60% 45%;
+    --destructive-foreground: var(--cream);
 
-    --border: 160 40% 25%;
-    --input: 160 40% 25%;
-    --ring: 150 55% 41%;
+    --border: 150 30% 22%;
+    --input: 150 30% 22%;
+    --ring: var(--sprout);
   }
-}
-
-.shadow-light {
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.085);
-}
-
-.shadow-dark {
-  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.141);
 }
 
 @layer base {
@@ -150,14 +86,64 @@ html {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    font-weight: 500;
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-manrope), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  .font-serif {
+    font-family: "Times New Roman", Times, serif;
+    font-weight: 400;
     letter-spacing: -0.01em;
   }
-  
-  h1, h2, h3, h4, h5, h6, .font-bold {
-    font-weight: 600;
-    letter-spacing: -0.02em;
-  }
+}
+
+/* ----- Scroll reveal ----- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ----- Decorative underline (hero accent) ----- */
+.underline-accent {
+  display: inline-block;
+  position: relative;
+}
+.underline-accent::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0.18em;
+  height: 0.32em;
+  background: hsl(var(--sprout) / 0.25);
+  z-index: -1;
+  transform: skewX(-8deg);
+}
+
+/* ----- Pulse dot ----- */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+.pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* ----- Marquee ----- */
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+.marquee-mask {
+  mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+}
+.marquee-track {
+  animation: marquee 40s linear infinite;
+  width: max-content;
 }

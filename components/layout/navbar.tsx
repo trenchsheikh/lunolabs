@@ -2,161 +2,115 @@
 import { Menu } from "lucide-react";
 import React from "react";
 import {
-    Sheet,
-    SheetContent,
-    SheetFooter,
-    SheetHeader,
-    SheetTitle,
-    SheetTrigger,
+  Sheet,
+  SheetContent,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
 } from "../ui/sheet";
 import { Separator } from "../ui/separator";
-import {
-    NavigationMenu, NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList
-} from "../ui/navigation-menu";
-import { Button } from "../ui/button";
 import Link from "next/link";
-import Image from "next/image";
-import { ToggleTheme } from "./toogle-theme";
 
 interface RouteProps {
   href: string;
   label: string;
 }
 
-interface FeatureProps {
-  title: string;
-  description: string;
-}
-
 const routeList: RouteProps[] = [
-  {
-    href: "#services",
-    label: "Services",
-  },
-  {
-    href: "#work",
-    label: "Work",
-  },
-  {
-    href: "#about",
-    label: "About",
-  },
-  {
-    href: "#faq",
-    label: "FAQ",
-  },
-  {
-    href: "#contact",
-    label: "Contact",
-  },
-];
-
-const featureList: FeatureProps[] = [
-  {
-    title: "Web2 Development",
-    description: "MVPs, production web apps, mobile apps, and dashboards built with modern stacks.",
-  },
-  {
-    title: "Web3 Development",
-    description: "Token launches, trading bots, on chain tools, and agentic AI integrations.",
-  },
-  {
-    title: "End to End Delivery",
-    description: "From idea to production deployment with monitoring, docs, and support.",
-  },
+  { href: "#build", label: "What we build" },
+  { href: "#process", label: "Process" },
+  { href: "#work", label: "Work" },
+  { href: "#team", label: "Team" },
+  { href: "#faq", label: "FAQ" },
 ];
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+
   return (
-    <header className="shadow-lg backdrop-blur-md bg-card/70 w-[95%] md:w-[80%] lg:w-[85%] lg:max-w-screen-xl top-6 mx-auto sticky border border-secondary/50 z-40 rounded-full flex justify-between items-center px-4 py-0">
-      <Link href="/" className="font-bold flex items-center shrink-0">
-          <Image
-            src="/Luno-logo.png"
-            alt="Luno Labs"
-            width={200}
-            height={64}
-            className="h-16 w-auto relative top-1"
-          />
-      </Link>
-      {/* <!-- Mobile --> */}
-      <div className="flex items-center lg:hidden">
-        <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetTrigger asChild>
-            <Menu
-              onClick={() => setIsOpen(!isOpen)}
-              className="cursor-pointer lg:hidden"
-            />
-          </SheetTrigger>
+    <header className="sticky top-0 z-50 backdrop-blur-md bg-background/85 border-b border-ink/10">
+      <div className="max-w-[1320px] mx-auto px-6 md:px-12 py-4 flex items-center justify-between gap-6">
+        <Link href="/" className="flex items-baseline gap-2.5 shrink-0">
+          <span className="font-serif text-[26px] md:text-[28px] leading-none text-moss-2 tracking-tight">
+            Luno<span className="italic text-sprout ml-0.5">Labs</span>
+          </span>
+          <span className="font-serif italic text-[13px] text-moss/50 hidden sm:inline">
+            since 2022
+          </span>
+        </Link>
 
-          <SheetContent
-            side="left"
-            className="flex flex-col justify-between rounded-tr-2xl rounded-br-2xl bg-card border-secondary"
+        <nav className="hidden lg:flex items-center gap-9">
+          {routeList.map(({ href, label }) => (
+            <Link
+              key={href}
+              href={href}
+              className="group relative text-sm font-medium text-ink hover:text-sprout transition-colors py-1.5"
+            >
+              {label}
+              <span className="absolute left-0 bottom-0 h-px w-0 bg-sprout transition-all duration-300 group-hover:w-full" />
+            </Link>
+          ))}
+        </nav>
+
+        <div className="hidden lg:block">
+          <Link
+            href="#contact"
+            className="inline-flex items-center gap-2 bg-moss-2 text-cream px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-sprout hover:-translate-y-0.5 transition-all"
           >
-            <div>
-              <SheetHeader className="mb-4 ml-4">
-                <SheetTitle className="flex items-center">
-                  <Link href="/" className="flex items-center">
-                    <Image
-                      src="/Luno-logo.png"
-                      alt="Luno Labs"
-                      width={180}
-                      height={56}
-                      className="h-12 w-auto"
-                    />
-                  </Link>
-                </SheetTitle>
-              </SheetHeader>
-
-              <div className="flex flex-col gap-2">
-                {routeList.map(({ href, label }) => (
-                  <Button
-                    key={href}
-                    onClick={() => setIsOpen(false)}
-                    asChild
-                    variant="ghost"
-                    className="justify-start text-base font-semibold"
-                  >
-                    <Link href={href}>{label}</Link>
-                  </Button>
-                ))}
-              </div>
-            </div>
-
-            <SheetFooter className="flex-col sm:flex-col justify-start items-start">
-              <Separator className="mb-2" />
-
-              <ToggleTheme />
-            </SheetFooter>
-          </SheetContent>
-        </Sheet>
-      </div>
-
-      {/* <!-- Desktop --> */}
-      <NavigationMenu className="hidden lg:block mx-auto">
-        <NavigationMenuList>
-          <NavigationMenuItem>
-            {routeList.map(({ href, label }) => (
-              <NavigationMenuLink key={href} asChild>
-                <Link href={href} className="text-base px-3 font-semibold hover:text-primary transition-colors">
-                  {label}
-                </Link>
-              </NavigationMenuLink>
-            ))}
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
-
-      <div className="hidden lg:flex">
-        <ToggleTheme />
-
-        <Button asChild size="sm" className="font-semibold rounded-full px-6">
-          <Link href="#contact">
-            Get Started
+            Book a call <span aria-hidden>→</span>
           </Link>
-        </Button>
+        </div>
+
+        <div className="flex items-center lg:hidden">
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger asChild>
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="text-moss-2"
+                aria-label="Open menu"
+              >
+                <Menu />
+              </button>
+            </SheetTrigger>
+            <SheetContent
+              side="right"
+              className="flex flex-col justify-between bg-background border-ink/10"
+            >
+              <div>
+                <SheetHeader className="mb-6">
+                  <SheetTitle className="text-left">
+                    <span className="font-serif text-2xl text-moss-2">
+                      Luno<span className="italic text-sprout">Labs</span>
+                    </span>
+                  </SheetTitle>
+                </SheetHeader>
+                <div className="flex flex-col gap-1">
+                  {routeList.map(({ href, label }) => (
+                    <Link
+                      key={href}
+                      href={href}
+                      onClick={() => setIsOpen(false)}
+                      className="font-serif text-2xl text-moss-2 py-2 hover:text-sprout transition-colors"
+                    >
+                      {label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+              <SheetFooter className="flex-col items-start gap-4">
+                <Separator />
+                <Link
+                  href="#contact"
+                  onClick={() => setIsOpen(false)}
+                  className="inline-flex items-center gap-2 bg-moss-2 text-cream px-5 py-3 rounded-full text-sm font-semibold w-full justify-center"
+                >
+                  Book a call →
+                </Link>
+              </SheetFooter>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </header>
   );

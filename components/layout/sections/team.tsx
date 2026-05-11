@@ -1,108 +1,116 @@
 import Image from "next/image";
-import TelegramIcon from "@/components/icons/telegram-icon";
-import LinkedInIcon from "@/components/icons/linkedin-icon";
-import XIcon from "@/components/icons/x-icon";
-import {
-    Card,
-    CardContent,
-    CardHeader,
-    CardTitle,
-    CardFooter,
-} from "@/components/ui/card";
-import Link from "next/link";
 
-interface SocialNetworkProps {
-  name: string;
-  url: string;
+interface Fact {
+  k: string;
+  v: React.ReactNode;
 }
 
-const founderSocials: SocialNetworkProps[] = [
+const FACTS: Fact[] = [
   {
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/in/samitahir1/",
+    k: "Background",
+    v: (
+      <>
+        Ex-IBM · Google HQ{" "}
+        <span className="italic text-sprout">AI educator</span>
+      </>
+    ),
   },
   {
-    name: "Telegram",
-    url: "https://t.me/trenchsheikh",
+    k: "Track record",
+    v: (
+      <>
+        3 token launches, <span className="italic text-sprout">$5M+</span>{" "}
+        shipped
+      </>
+    ),
   },
   {
-    name: "X",
-    url: "https://x.com/trench_sheikh",
+    k: "Accolades",
+    v: (
+      <>
+        8× <span className="italic text-sprout">hackathon champion</span>
+      </>
+    ),
+  },
+  {
+    k: "Studio",
+    v: (
+      <>
+        Luno Labs, <span className="italic text-sprout">since 2022</span>
+      </>
+    ),
   },
 ];
 
 export const TeamSection = () => {
-  const socialIcon = (socialName: string) => {
-    switch (socialName) {
-      case "LinkedIn":
-        return <LinkedInIcon />;
-      case "Telegram":
-        return <TelegramIcon />;
-      case "X":
-        return <XIcon />;
-    }
-  };
-
   return (
-    <section id="about" className="container py-24 sm:py-32">
-      <div className="text-center mb-8">
-        <h2 className="text-lg text-primary text-center mb-2 tracking-wider">
-          About
-        </h2>
-
-        <h2 className="text-3xl md:text-4xl text-center font-bold mb-8">
-          Built by specialists
-        </h2>
-
-        <p className="max-w-2xl mx-auto text-lg text-muted-foreground mb-12">
-          Luno Labs is a team of specialist engineers shipping at startup speed. 
-          We partner from zero to one through scale, keeping quality and reliability front and center.
-        </p>
+    <section
+      id="team"
+      className="max-w-[1320px] mx-auto px-6 md:px-12 py-24 md:py-36"
+    >
+      <div className="flex items-center gap-4 mb-8">
+        <span className="font-serif italic text-sprout text-lg">vi.</span>
+        <span className="text-xs tracking-[0.25em] uppercase text-moss font-semibold">
+          Who you&apos;ll work with
+        </span>
+        <span className="flex-1 h-px bg-ink/15" />
       </div>
 
-      <div className="max-w-md mx-auto">
-        <Card className="bg-muted/60 dark:bg-card overflow-hidden">
-          <CardHeader className="text-center">
-            <div className="flex justify-center mb-4">
-              <div className="w-48 h-64 rounded-lg overflow-hidden border-2 border-primary/20">
-                <Image 
-                  src="/sami.jpg" 
-                  alt="Sami Tahir"
-                  width={192}
-                  height={256}
-                  className="w-full h-full object-cover"
-                  style={{ objectPosition: '50% 35%' }}
-                />
+      <h2 className="font-serif text-moss-2 leading-[1.0] tracking-[-0.025em] text-[40px] sm:text-[52px] md:text-[64px] lg:text-[80px] max-w-[980px]">
+        A small studio.{" "}
+        <span className="italic text-sprout">A short list of names.</span>
+      </h2>
+
+      <div className="grid md:grid-cols-[420px_1fr] lg:grid-cols-[480px_1fr] gap-12 md:gap-20 mt-16 md:mt-20 items-start">
+        <div>
+          <div className="relative w-full aspect-[4/5] rounded-sm overflow-hidden bg-moss-2">
+            <Image
+              src="/sami.jpg"
+              alt="Sami Tahir, Founder of Luno Labs"
+              fill
+              className="object-cover"
+              style={{ objectPosition: "50% 35%" }}
+              sizes="(min-width: 1024px) 480px, (min-width: 768px) 420px, 100vw"
+            />
+          </div>
+          <div className="font-serif italic text-sm text-moss/60 mt-3 text-right">
+            Sami, in his natural habitat — fixing something.
+          </div>
+        </div>
+
+        <div>
+          <h3 className="font-serif text-[44px] md:text-[56px] text-moss-2 leading-none tracking-[-0.02em] mb-2">
+            Sami Tahir
+          </h3>
+          <div className="font-serif italic text-xl text-sprout mb-7">
+            Founder &amp; head builder
+          </div>
+          <p className="text-[17px] leading-relaxed text-ink/85 max-w-[580px] mb-4">
+            Sami started Luno Labs in 2022 because too many small businesses
+            were being sold software they didn&apos;t need by people who
+            wouldn&apos;t return their calls. He&apos;s an ex-IBM engineer, led
+            an AI education initiative at Google HQ, and has shipped agentic
+            systems, token launches and production platforms with combined
+            value well past $5M.
+          </p>
+          <p className="text-[17px] leading-relaxed text-ink/85 max-w-[580px]">
+            But mostly he just likes building <em>useful</em> things for people
+            who actually use them.
+          </p>
+
+          <dl className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-9">
+            {FACTS.map((f) => (
+              <div key={f.k} className="border-t border-ink/15 pt-4">
+                <dt className="text-[11px] tracking-[0.2em] uppercase text-moss/60 mb-1.5">
+                  {f.k}
+                </dt>
+                <dd className="font-serif text-[20px] md:text-[22px] text-moss-2 leading-tight">
+                  {f.v}
+                </dd>
               </div>
-            </div>
-            <CardTitle className="text-2xl">
-              Sami Tahir
-            </CardTitle>
-            <p className="text-primary font-medium">Founder & CEO</p>
-          </CardHeader>
-
-          <CardContent className="text-center text-muted-foreground space-y-2">
-            <p>Ex IBM</p>
-            <p>Led AI education initiative at Google HQ</p>
-            <p>Built production agentic payment systems with stablecoins at 0em Labs</p>
-            <p>Delivered 3 successful token launches exceeding $5M+ in total value</p>
-            <p className="font-semibold text-foreground pt-2">8× Hackathon Champion</p>
-          </CardContent>
-
-          <CardFooter className="flex justify-center space-x-4 pb-6">
-            {founderSocials.map(({ name, url }, index) => (
-              <Link
-                key={index}
-                href={url}
-                target="_blank"
-                className="hover:opacity-80 transition-all"
-                aria-label={name}
-              >
-                {socialIcon(name)}
-              </Link>
             ))}
-          </CardFooter>
-        </Card>
+          </dl>
+        </div>
       </div>
     </section>
   );
