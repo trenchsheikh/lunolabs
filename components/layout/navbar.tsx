@@ -11,6 +11,7 @@ import {
 } from "../ui/sheet";
 import { Separator } from "../ui/separator";
 import Link from "next/link";
+import { CalendlyBookButton } from "@/components/calendly-book-button";
 
 interface RouteProps {
   href: string;
@@ -54,12 +55,9 @@ export const Navbar = () => {
         </nav>
 
         <div className="hidden lg:block">
-          <Link
-            href="#contact"
-            className="inline-flex items-center gap-2 bg-moss-2 text-cream px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-sprout hover:-translate-y-0.5 transition-all"
-          >
+          <CalendlyBookButton className="inline-flex items-center gap-2 bg-moss-2 text-cream px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-sprout hover:-translate-y-0.5 transition-all">
             Book a call <span aria-hidden>→</span>
-          </Link>
+          </CalendlyBookButton>
         </div>
 
         <div className="flex items-center lg:hidden">
@@ -100,13 +98,12 @@ export const Navbar = () => {
               </div>
               <SheetFooter className="flex-col items-start gap-4">
                 <Separator />
-                <Link
-                  href="#contact"
+                <CalendlyBookButton
                   onClick={() => setIsOpen(false)}
                   className="inline-flex items-center gap-2 bg-moss-2 text-cream px-5 py-3 rounded-full text-sm font-semibold w-full justify-center"
                 >
                   Book a call →
-                </Link>
+                </CalendlyBookButton>
               </SheetFooter>
             </SheetContent>
           </Sheet>

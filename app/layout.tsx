@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { CalendlyBadgeWidget } from "@/components/calendly-badge-widget";
 import { Navbar } from "@/components/layout/navbar";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 
@@ -15,7 +16,7 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   title: "Luno Labs — We listen, then we build",
   description:
-    "A small studio for small businesses without software. Booking systems, websites, and AI automations — built calmly, shipped fast, made to last.",
+    "A small studio for small businesses without software. Booking systems, websites, and AI automations — calm builds, made to last.",
   icons: {
     icon: "/Luno-logo.png",
     shortcut: "/Luno-logo.png",
@@ -40,6 +41,7 @@ export default function RootLayout({
           <Navbar />
           {children}
         </ThemeProvider>
+        <CalendlyBadgeWidget />
       </body>
     </html>
   );

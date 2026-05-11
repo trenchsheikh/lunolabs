@@ -30,7 +30,6 @@ export const CryptoTicker = () => {
     };
 
     fetchCryptoData();
-    // Refresh every 60 seconds
     const interval = setInterval(fetchCryptoData, 60000);
 
     return () => clearInterval(interval);
