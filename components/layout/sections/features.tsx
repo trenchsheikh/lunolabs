@@ -1,140 +1,109 @@
-"use client";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Icon } from "@/components/ui/icon";
-import { icons } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { useState } from "react";
-
-interface ServiceProps {
-  icon: string;
-  title: string;
+interface BuildCardProps {
+  num: string;
+  title: React.ReactNode;
   description: string;
+  tags: string[];
 }
 
-const web2Services: ServiceProps[] = [
+const BUILDS: BuildCardProps[] = [
   {
-    icon: "Zap",
-    title: "MVPs & Production Web Apps",
-    description: "Full stack web applications built with React/Next.js, TypeScript, and modern tooling.",
+    num: "01.",
+    title: (
+      <>
+        Booking <span className="italic text-sprout">systems</span>
+      </>
+    ),
+    description:
+      "The waiting list, the no-shows, the WhatsApp messages at 11pm — gone. We build calendar systems that fit how you actually work, with deposits, reminders, and a dashboard your front-desk can actually use.",
+    tags: ["salons", "clinics", "studios", "trades"],
   },
   {
-    icon: "Smartphone",
-    title: "Mobile Apps (React Native/Expo)",
-    description: "Cross platform mobile apps for iOS and Android with native performance.",
+    num: "02.",
+    title: (
+      <>
+        Websites that <span className="italic text-sprout">earn their keep</span>
+      </>
+    ),
+    description:
+      "A real website — fast, beautiful, and pointed straight at the thing you want people to do. Whether that's a booking, a quote, or a phone call. We measure what works and rebuild what doesn't.",
+    tags: ["landing", "e-commerce", "portfolios", "menus"],
   },
   {
-    icon: "BarChart3",
-    title: "Dashboards & Analytics",
-    description: "Data visualization, admin panels, and real time monitoring systems.",
+    num: "03.",
+    title: (
+      <>
+        AI <span className="italic text-sprout">automations</span>
+      </>
+    ),
+    description:
+      "Quiet little workers that handle the inbox, draft the reply, follow up with the lead, and surface only what you actually need to see. Tuned to your tone of voice, not a generic chatbot.",
+    tags: ["inbox", "follow-up", "scheduling", "research"],
   },
   {
-    icon: "CreditCard",
-    title: "Payment & Auth Integrations",
-    description: "Secure payment processing, authentication flows, and user management.",
-  },
-  {
-    icon: "Shield",
-    title: "Performance and Reliability",
-    description: "Optimized for speed, security, and uptime with proper monitoring.",
-  },
-  {
-    icon: "Bot",
-    title: "Agentic AI + MCP Integrations",
-    description: "AI agents with Model Context Protocol for autonomous workflows.",
-  },
-];
-
-const web3Services: ServiceProps[] = [
-  {
-    icon: "Coins",
-    title: "Token Launches & Launch Ops",
-    description: "End to end token deployment, compliance checks, and go to market strategy.",
-  },
-  {
-    icon: "TrendingUp",
-    title: "Trading Bots & On chain Tools",
-    description: "Automated trading systems, market makers, and blockchain integrations.",
-  },
-  {
-    icon: "Bot",
-    title: "Agentic AI + MCP Integrations",
-    description: "AI agents with Model Context Protocol for autonomous workflows.",
-  },
-  {
-    icon: "Wallet",
-    title: "Wallet, Auth & On chain UX",
-    description: "Seamless wallet connections and blockchain powered authentication.",
-  },
-  {
-    icon: "FileCode",
-    title: "Smart Contract Integrations",
-    description: "Contract interactions, event indexing, and on chain data management.",
+    num: "04.",
+    title: (
+      <>
+        Custom <span className="italic text-sprout">tools</span>
+      </>
+    ),
+    description:
+      "The internal dashboard you've been describing to ChatGPT. The membership portal. The intake form that finally syncs with your CRM. If it doesn't exist yet, we'll build it small and useful first.",
+    tags: ["dashboards", "portals", "intake", "integrations"],
   },
 ];
 
 export const FeaturesSection = () => {
-  const [activeTab, setActiveTab] = useState<"web2" | "web3">("web2");
-
   return (
-    <section id="services" className="container py-24 sm:py-32">
-      <h2 className="text-lg text-primary text-center mb-2 tracking-wider">
-        Services
-      </h2>
-
-      <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">
-        What we build
-      </h2>
-
-      <div className="flex justify-center gap-4 mb-12 mt-8">
-        <Button
-          variant={activeTab === "web2" ? "default" : "outline"}
-          onClick={() => setActiveTab("web2")}
-          className="px-8"
-        >
-          Web2 Development
-        </Button>
-        <Button
-          variant={activeTab === "web3" ? "default" : "outline"}
-          onClick={() => setActiveTab("web3")}
-          className="px-8"
-        >
-          Web3 Development
-        </Button>
+    <section
+      id="build"
+      className="max-w-[1320px] mx-auto px-6 md:px-12 py-24 md:py-36 relative"
+    >
+      <div className="flex items-center gap-4 mb-8">
+        <span className="font-serif italic text-sprout text-lg">i.</span>
+        <span className="text-xs tracking-[0.25em] uppercase text-moss font-semibold">
+          What we build
+        </span>
+        <span className="flex-1 h-px bg-ink/15" />
       </div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-        {(activeTab === "web2" ? web2Services : web3Services).map(({ icon, title, description }) => (
-          <div key={title}>
-            <Card className="h-full bg-background border-0 shadow-none">
-              <CardHeader className="flex justify-center items-center">
-                <div className="bg-primary/20 p-2 rounded-full ring-8 ring-primary/10 mb-4">
-                  <Icon
-                    name={icon as keyof typeof icons}
-                    size={24}
-                    color="hsl(var(--primary))"
-                    className="text-primary"
-                  />
-                </div>
+      <h2 className="font-serif text-moss-2 leading-[1.0] tracking-[-0.025em] text-[44px] sm:text-[56px] md:text-[72px] lg:text-[88px] max-w-[980px]">
+        Soft tools for <span className="italic text-sprout">real businesses.</span>{" "}
+        Not the other way around.
+      </h2>
+      <p className="text-lg md:text-xl leading-relaxed text-ink/75 max-w-[620px] mt-7">
+        Three core practices, all under one roof. We start with whichever one
+        your business needs right now, and grow from there.
+      </p>
 
-                <CardTitle className="text-center">{title}</CardTitle>
-              </CardHeader>
-
-              <CardContent className="text-muted-foreground text-center">
-                {description}
-              </CardContent>
-            </Card>
-          </div>
+      <div className="grid sm:grid-cols-2 gap-0 mt-16 md:mt-20 border-t border-ink/15">
+        {BUILDS.map((b, i) => (
+          <article
+            key={b.num}
+            className={`group relative px-6 py-12 md:px-12 md:py-14 border-b border-ink/15 cursor-default transition-colors hover:bg-sprout/[0.06] ${
+              i % 2 === 0 ? "sm:border-r sm:border-ink/15" : ""
+            }`}
+          >
+            <span className="absolute top-12 right-6 md:top-14 md:right-12 font-serif italic text-sprout text-lg">
+              {b.num}
+            </span>
+            <h3 className="font-serif text-moss-2 text-[32px] md:text-[44px] leading-[1.05] tracking-[-0.02em] mb-5 max-w-[480px]">
+              {b.title}
+            </h3>
+            <p className="text-base md:text-[17px] leading-relaxed text-ink/80 max-w-[480px] mb-6">
+              {b.description}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {b.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="font-serif italic text-sm text-moss bg-cream-2 px-3.5 py-1 rounded-full"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </article>
         ))}
-      </div>
-
-      <div className="text-center mt-8">
-        <p className="text-muted-foreground mb-4">
-          Not sure where to start?
-        </p>
-        <Button asChild variant="outline">
-          <Link href="#contact">Talk to us →</Link>
-        </Button>
       </div>
     </section>
   );

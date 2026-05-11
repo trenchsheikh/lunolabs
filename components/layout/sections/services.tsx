@@ -1,171 +1,177 @@
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { ExternalLink } from "lucide-react";
 import Link from "next/link";
 
-interface WorkProps {
+interface WorkItem {
   title: string;
-  tagline: string;
-  description: string;
-  type: string;
+  desc: string;
+  tag: string;
+  year?: string;
+  mark: string;
+  markItalic?: boolean;
+  span: "feature" | "half" | "third";
+  bg: "moss" | "sprout" | "warm";
   href?: string;
 }
 
-const workList: WorkProps[] = [
+const WORK: WorkItem[] = [
   {
-    title: "LobSmash",
-    tagline: "World Class AI Padel Coach & Performance Analytics",
-    description:
-      "We built the high conversion landing page and are currently developing the core mobile application. LobSmash uses computer vision to deconstruct player motion, providing pro level feedback and tactical match decoding through its proprietary neural engine.",
-    type: "Web2",
+    title: "LobSmash — an AI padel coach in your pocket",
+    desc: "High-conversion landing page plus a mobile app in active development. Computer vision deconstructs player motion and feeds back pro-level tactical analysis through a proprietary neural engine.",
+    tag: "AI · Mobile · Computer Vision",
+    year: "2025",
+    mark: "LobSmash",
+    markItalic: true,
+    span: "feature",
+    bg: "moss",
     href: "https://www.lobsmash.com",
   },
   {
     title: "Kurek Hersi",
-    tagline: "Performance coach to world leaders & athletes",
-    description:
-      "Built a high conversion landing page for world class strategic performance coach Kurek Hersi. We delivered a premium, high performance architecture with fluid animations and rapid load speeds to match the elite brand identity.",
-    type: "Web2",
+    desc: "A premium, kinetic site for a performance coach who works with world leaders and elite athletes. Built to match the brand.",
+    tag: "Brand site",
+    year: "2024",
+    mark: "Kurek",
+    span: "half",
+    bg: "sprout",
     href: "https://www.kurekhersi.com",
   },
   {
-    title: "Build Fund",
-    tagline: "Investment fund via token launches",
-    description:
-      "We built the application and launched the token with tax per trade to fund builders on the BNB ecosystem. We architected a token launch pipeline from compliance checks to go to market, enabling faster, repeatable launches.",
-    type: "Web3",
-    href: "https://www.buildfund.io/",
-  },
-  {
     title: "Omar Technical School",
-    tagline: "Elite Football Development for Youth Aged 5 to 18",
-    description:
-      "Designed and developed a comprehensive digital ecosystem, including a high performance landing page and a custom member portal for elite youth football training. We focused on seamless user journeys and robust backend architecture to support growing athlete data.",
-    type: "Web2",
+    desc: "A complete digital home for elite youth football training — landing page, member portal, and a backend that keeps player data clean as the academy grows.",
+    tag: "Education · Portal",
+    year: "2024",
+    mark: "OTS",
+    markItalic: true,
+    span: "half",
+    bg: "warm",
     href: "https://www.omartechnicalschool.com",
   },
   {
     title: "Valuto",
-    tagline: "Financial education app for ages 11 to 18",
-    description:
-      "Built learning flows, scoring, and dashboards to make finance engaging and measurable for teens and schools.",
-    type: "Web2",
-  },
-  {
-    title: "AsterLite",
-    tagline: "Telegram futures trading bot on Aster",
-    description:
-      "Delivered lightning fast trade flows and position visibility inside Telegram with robust safety rails.",
-    type: "Web3",
-    href: "https://asterlitetrading.com/",
+    desc: "Financial literacy for ages 11–18. Learning flows, scoring, dashboards for teachers.",
+    tag: "Edtech",
+    mark: "Valuto",
+    markItalic: true,
+    span: "third",
+    bg: "moss",
   },
   {
     title: "HyperTruth",
-    tagline: "AI agent with MCP for prediction markets",
-    description:
-      "An agentic system that finds the closest answer reliably across sources, tailored for market resolution and due diligence.",
-    type: "Web3",
+    desc: "An agentic system that finds the closest, most defensible answer across sources. Tuned for due diligence.",
+    tag: "AI Agent",
+    mark: "HT",
+    span: "third",
+    bg: "sprout",
     href: "https://www.hypertruth.app/",
   },
   {
-    title: "[REDACTED]",
-    tagline: "I signed an NDA, if I speak I'm in trouble",
-    description:
-      "Let's just say it involved some really cool tech, shipped on time, and the client was happy. That's all I can legally tell you.",
-    type: "Web2",
+    title: "[Redacted]",
+    desc: "Signed an NDA — if we speak, we're in trouble. Shipped on time, client happy. That's all we can legally say.",
+    tag: "Under wraps",
+    mark: "NDA",
+    markItalic: true,
+    span: "third",
+    bg: "warm",
   },
 ];
 
+const spanClass = {
+  feature: "md:col-span-12",
+  half: "md:col-span-6",
+  third: "md:col-span-4",
+};
+
+const aspectClass = {
+  feature: "aspect-[21/9]",
+  half: "aspect-[16/10]",
+  third: "aspect-[4/5]",
+};
+
+const bgClass = {
+  moss: "bg-moss-2 text-cream",
+  sprout: "bg-sprout text-cream",
+  warm: "bg-warm text-moss-2",
+};
+
 export const ServicesSection = () => {
   return (
-    <section id="work" className="container py-24 sm:py-32">
-      <div className="text-center mb-12">
-        <h2 className="text-lg text-primary mb-2 tracking-wider uppercase font-semibold">
-          Portfolio
-        </h2>
-        <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
+    <section
+      id="work"
+      className="max-w-[1320px] mx-auto px-6 md:px-12 py-24 md:py-36"
+    >
+      <div className="flex items-center gap-4 mb-8">
+        <span className="font-serif italic text-sprout text-lg">iv.</span>
+        <span className="text-xs tracking-[0.25em] uppercase text-moss font-semibold">
           Selected work
-        </h2>
-        <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-          High performance applications and platforms delivered for Web2 and Web3 leaders.
-        </p>
+        </span>
+        <span className="flex-1 h-px bg-ink/15" />
       </div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full mx-auto">
-        {workList.slice(0, 7).map(({ title, tagline, description, type, href }) => (
-          <Card
-            key={title}
-            className="group bg-card/40 backdrop-blur-sm border-secondary/50 h-full relative hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300 flex flex-col overflow-hidden"
-          >
-            <CardHeader className="flex-grow p-8">
-              <div className="flex items-center justify-between mb-4">
-                <Badge variant="outline" className="text-[10px] uppercase tracking-widest font-bold py-0.5 px-2 bg-background/50">
-                  {type}
-                </Badge>
-                {href && (
-                  <div className="text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <ExternalLink className="size-4" />
-                  </div>
+      <h2 className="font-serif text-moss-2 leading-[1.0] tracking-[-0.025em] text-[44px] sm:text-[56px] md:text-[72px] lg:text-[88px] max-w-[980px]">
+        A few <span className="italic text-sprout">things</span> we&apos;ve shipped.
+      </h2>
+
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mt-16 md:mt-20">
+        {WORK.map((w) => {
+          const card = (
+            <div
+              key={w.title}
+              className={`${spanClass[w.span]} group transition-transform duration-300`}
+            >
+              <div
+                className={`relative overflow-hidden rounded-xl mb-6 flex items-center justify-center transition-transform duration-300 group-hover:scale-[1.02] ${aspectClass[w.span]} ${bgClass[w.bg]}`}
+              >
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    backgroundImage:
+                      "repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(255,255,255,0.04) 12px, rgba(255,255,255,0.04) 13px)",
+                  }}
+                />
+                <span
+                  className={`font-serif text-5xl md:text-6xl opacity-40 tracking-[-0.02em] ${
+                    w.markItalic ? "italic" : ""
+                  }`}
+                >
+                  {w.mark}
+                </span>
+              </div>
+              <div className="flex items-center gap-3.5 mb-3">
+                <span className="font-serif italic text-[13px] text-sprout">
+                  {w.tag}
+                </span>
+                <span className="flex-1 h-px bg-ink/15" />
+                {w.year && (
+                  <span className="text-[12px] tracking-[0.1em] text-moss/60">
+                    {w.year}
+                  </span>
                 )}
               </div>
-              
-              <CardTitle className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
-                {title}
-              </CardTitle>
-              
-              <CardDescription className="text-base font-semibold text-foreground/90 mb-4 line-clamp-1">
-                {tagline}
-              </CardDescription>
-              
-              <CardDescription className="text-muted-foreground leading-relaxed">
-                {description}
-              </CardDescription>
-            </CardHeader>
-
-            {href && (
-              <CardContent className="p-8 pt-0 mt-auto">
-                <Button asChild variant="secondary" size="sm" className="w-full group/btn font-bold rounded-lg border border-transparent group-hover:border-primary/20 group-hover:bg-primary/10 transition-all">
-                  <Link href={href} target="_blank" className="flex items-center justify-center">
-                    Visit Project
-                    <ExternalLink className="ml-2 size-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-                  </Link>
-                </Button>
-              </CardContent>
-            )}
-          </Card>
-        ))}
-
-        {/* Integrated NDA card */}
-        <Card className="bg-muted/30 border-dashed border-2 border-secondary/60 h-full flex flex-col items-center justify-center p-8 text-center min-h-[300px]">
-          <div className="bg-background/50 p-4 rounded-full mb-4">
-            <svg className="size-8 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-            </svg>
-          </div>
-          <CardTitle className="text-xl font-bold mb-2">{workList[7].title}</CardTitle>
-          <p className="text-muted-foreground mb-4 text-sm px-4">
-            {workList[7].description}
-          </p>
-          <Badge variant="secondary" className="font-bold">
-            {workList[7].type}
-          </Badge>
-        </Card>
-      </div>
-
-      <div className="text-center mt-16">
-        <p className="text-muted-foreground font-medium mb-6">
-          More projects and technical case studies available on request.
-        </p>
-        <Button asChild variant="outline" className="rounded-full px-8">
-          <Link href="#contact">Discuss your project →</Link>
-        </Button>
+              <h3
+                className={`font-serif text-moss-2 mb-2 tracking-[-0.02em] ${
+                  w.span === "feature" ? "text-3xl md:text-[44px]" : "text-2xl md:text-[28px]"
+                }`}
+              >
+                {w.title}
+              </h3>
+              <p className="text-[15px] text-ink/70 leading-relaxed max-w-[520px]">
+                {w.desc}
+              </p>
+            </div>
+          );
+          return w.href ? (
+            <Link
+              key={w.title}
+              href={w.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${spanClass[w.span]} block`}
+            >
+              {card}
+            </Link>
+          ) : (
+            card
+          );
+        })}
       </div>
     </section>
   );

@@ -1,107 +1,37 @@
-import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
-import Image from "next/image";
-import GithubIcon from "@/components/icons/github-icon";
-import LinkedInIcon from "@/components/icons/linkedin-icon";
-import XIcon from "@/components/icons/x-icon";
 
 export const FooterSection = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer id="footer" className="container py-24 sm:py-32">
-      <div className="p-10 bg-card border border-secondary rounded-2xl">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-12 gap-y-8">
-          <div className="col-span-full md:col-span-2">
-            <Link href="/" className="flex font-bold items-center mb-4">
-              <Image
-                src="/Luno-logo.png"
-                alt="Luno Labs"
-                width={200}
-                height={60}
-                className="h-16 w-auto"
-              />
-            </Link>
-            <p className="text-sm text-muted-foreground max-w-xs">
-              Specialist builders for Web2 and Web3. We ship production apps, mobile, token launches, and agentic AI fast and right.
-            </p>
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <h3 className="font-bold text-lg">Navigation</h3>
-            <div>
-              <Link href="#services" className="opacity-60 hover:opacity-100">
-                Services
-              </Link>
-            </div>
-            <div>
-              <Link href="#work" className="opacity-60 hover:opacity-100">
-                Work
-              </Link>
-            </div>
-            <div>
-              <Link href="#about" className="opacity-60 hover:opacity-100">
-                About
-              </Link>
-            </div>
-            <div>
-              <Link href="#faq" className="opacity-60 hover:opacity-100">
-                FAQ
-              </Link>
-            </div>
-            <div>
-              <Link href="#contact" className="opacity-60 hover:opacity-100">
-                Contact
-              </Link>
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <h3 className="font-bold text-lg">Legal</h3>
-            <div>
-              <Link href="#" className="opacity-60 hover:opacity-100">
-                Privacy Policy
-              </Link>
-            </div>
-            <div>
-              <Link href="#" className="opacity-60 hover:opacity-100">
-                Terms of Service
-              </Link>
-            </div>
-          </div>
+    <footer
+      id="footer"
+      className="bg-moss-2 text-cream pt-16 pb-8 px-6 md:px-12 border-t border-cream/10"
+    >
+      <div className="max-w-[1320px] mx-auto">
+        <div className="font-serif text-cream/95 leading-[0.85] tracking-[-0.04em] text-[80px] sm:text-[120px] md:text-[180px] lg:text-[220px] mb-12 md:mb-16">
+          Built with
+          <br />
+          <span className="italic text-sprout-soft">quiet care.</span>
         </div>
 
-        <Separator className="my-6" />
-        
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">
-            © {currentYear} Luno Labs. All rights reserved.
-          </p>
-          
-          <div className="flex gap-4">
-            <Link
-              href="https://x.com"
-              target="_blank"
-              className="opacity-60 hover:opacity-100 transition-opacity"
-              aria-label="X (Twitter)"
-            >
-              <XIcon />
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pt-8 border-t border-cream/15 text-[13px] text-cream/60">
+          <div>
+            © {currentYear} Luno Labs ·{" "}
+            <em className="font-serif">since 2022</em>
+          </div>
+          <div className="flex gap-6 md:gap-8">
+            <Link href="#" className="hover:text-sprout-soft transition-colors">
+              Privacy
+            </Link>
+            <Link href="#" className="hover:text-sprout-soft transition-colors">
+              Terms
             </Link>
             <Link
-              href="https://github.com"
-              target="_blank"
-              className="opacity-60 hover:opacity-100 transition-opacity"
-              aria-label="GitHub"
+              href="mailto:hello@lunolabs.com"
+              className="hover:text-sprout-soft transition-colors"
             >
-              <GithubIcon />
-            </Link>
-            <Link
-              href="https://linkedin.com"
-              target="_blank"
-              className="opacity-60 hover:opacity-100 transition-opacity"
-              aria-label="LinkedIn"
-            >
-              <LinkedInIcon />
+              hello@lunolabs.com
             </Link>
           </div>
         </div>

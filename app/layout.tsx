@@ -1,14 +1,21 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Navbar } from "@/components/layout/navbar";
 import { ThemeProvider } from "@/components/layout/theme-provider";
-const inter = Inter({ subsets: ["latin"] });
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700", "800"],
+});
 
 export const metadata: Metadata = {
-  title: "Launch ready apps & tokens built fast and right",
-  description: "We're a team of specialist builders for Web2 and Web3 shipping production grade apps, sites, and token launches end to end. From idea to live product, we handle build, security, and deployment.",
+  title: "Luno Labs — We listen, then we build",
+  description:
+    "A small studio for small businesses without software. Booking systems, websites, and AI automations — built calmly, shipped fast, made to last.",
   icons: {
     icon: "/Luno-logo.png",
     shortcut: "/Luno-logo.png",
@@ -22,16 +29,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={cn("min-h-screen bg-background", inter.className)}>
+    <html lang="en" suppressHydrationWarning className={manrope.variable}>
+      <body className={cn("min-h-screen bg-background text-foreground", manrope.className)}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="light"
+          enableSystem={false}
           disableTransitionOnChange
         >
           <Navbar />
-
           {children}
         </ThemeProvider>
       </body>

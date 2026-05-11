@@ -1,141 +1,107 @@
-"use client";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import { Star } from "lucide-react";
-
-interface ReviewProps {
-  image: string;
+interface Quote {
+  text: React.ReactNode;
+  initial: string;
   name: string;
-  userName: string;
-  comment: string;
-  rating: number;
+  role: string;
 }
 
-const reviewList: ReviewProps[] = [
+const QUOTES: Quote[] = [
   {
-    image: "https://github.com/shadcn.png",
-    name: "John Doe",
-    userName: "Product Manager",
-    comment:
-      "Wow NextJs + Shadcn is awesome!. This template lets me change colors, fonts and images to match my brand identity. ",
-    rating: 5.0,
+    text: (
+      <>
+        The team listened more than they talked, which was already unusual.
+        Then they shipped{" "}
+        <span className="italic text-sprout">in four weeks</span> what another
+        agency had quoted us six months for.
+      </>
+    ),
+    initial: "M",
+    name: "Maya Okafor",
+    role: "Founder, Cedar & Bloom Salon",
   },
   {
-    image: "https://github.com/shadcn.png",
-    name: "Sophia Collins",
-    userName: "Cybersecurity Analyst",
-    comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. ",
-    rating: 4.8,
-  },
-
-  {
-    image: "https://github.com/shadcn.png",
-    name: "Adam Johnson",
-    userName: "Chief Technology Officer",
-    comment:
-      "Lorem ipsum dolor sit amet,exercitation. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    rating: 4.9,
+    text: (
+      <>
+        I didn&apos;t have a website. I didn&apos;t really know what I needed.
+        Sami&apos;s team made the whole thing feel{" "}
+        <span className="italic text-sprout">embarrassingly easy.</span>
+      </>
+    ),
+    initial: "D",
+    name: "Diego Marín",
+    role: "Owner, Marín & Sons Carpentry",
   },
   {
-    image: "https://github.com/shadcn.png",
-    name: "Ethan Parker",
-    userName: "Data Scientist",
-    comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod labore et dolore magna aliqua. Ut enim ad minim veniam.",
-    rating: 5.0,
+    text: (
+      <>
+        We replaced three tools and a spreadsheet with one quiet dashboard. The
+        team gets back{" "}
+        <span className="italic text-sprout">about an hour a day,</span> every
+        day.
+      </>
+    ),
+    initial: "A",
+    name: "Anya Patel",
+    role: "Practice Manager, North Clinic",
   },
   {
-    image: "https://github.com/shadcn.png",
-    name: "Ava Mitchell",
-    userName: "IT Project Manager",
-    comment:
-      "Lorem ipsum dolor sit amet, tempor incididunt  aliqua. Ut enim ad minim veniam, quis nostrud incididunt consectetur adipiscing elit.",
-    rating: 5.0,
-  },
-  {
-    image: "https://github.com/shadcn.png",
-    name: "Isabella Reed",
-    userName: "DevOps Engineer",
-    comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    rating: 4.9,
+    text: (
+      <>
+        They felt more like a thoughtful neighbor than an agency.{" "}
+        <span className="italic text-sprout">No nonsense, no jargon,</span> and
+        the work was beautiful.
+      </>
+    ),
+    initial: "J",
+    name: "Jordan Lee",
+    role: "Director, Lee Pilates Studio",
   },
 ];
 
 export const TestimonialSection = () => {
   return (
-    <section id="testimonials" className="container py-24 sm:py-32">
-      <div className="text-center mb-8">
-        <h2 className="text-lg text-primary text-center mb-2 tracking-wider">
-          Testimonials
+    <div className="bg-cream-2 py-24 md:py-36">
+      <div className="max-w-[1320px] mx-auto px-6 md:px-12">
+        <div className="flex items-center gap-4 mb-8">
+          <span className="font-serif italic text-sprout text-lg">v.</span>
+          <span className="text-xs tracking-[0.25em] uppercase text-moss font-semibold">
+            Kind words
+          </span>
+          <span className="flex-1 h-px bg-ink/15" />
+        </div>
+
+        <h2 className="font-serif text-moss-2 leading-[1.0] tracking-[-0.025em] text-[40px] sm:text-[52px] md:text-[64px] lg:text-[80px] max-w-[980px]">
+          What people <span className="italic text-sprout">say after</span> we
+          ship.
         </h2>
 
-        <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">
-          Hear What Our 1000+ Clients Say
-        </h2>
-      </div>
-
-      <Carousel
-        opts={{
-          align: "start",
-        }}
-        className="relative w-[80%] sm:w-[90%] lg:max-w-screen-xl mx-auto"
-      >
-        <CarouselContent>
-          {reviewList.map((review) => (
-            <CarouselItem
-              key={review.name}
-              className="md:basis-1/2 lg:basis-1/3"
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 mt-16 md:mt-20">
+          {QUOTES.map((q) => (
+            <figure
+              key={q.name}
+              className="relative bg-cream rounded-sm p-10 md:p-12"
             >
-              <Card className="bg-muted/50 dark:bg-card">
-                <CardContent className="pt-6 pb-0">
-                  <div className="flex gap-1 pb-6">
-                    <Star className="size-4 fill-primary text-primary" />
-                    <Star className="size-4 fill-primary text-primary" />
-                    <Star className="size-4 fill-primary text-primary" />
-                    <Star className="size-4 fill-primary text-primary" />
-                    <Star className="size-4 fill-primary text-primary" />
+              <span className="font-serif italic text-sprout/40 text-[80px] leading-none absolute top-6 left-8">
+                &ldquo;
+              </span>
+              <blockquote className="font-serif text-[20px] md:text-[22px] leading-snug text-moss-2 mt-14 mb-8">
+                {q.text}
+              </blockquote>
+              <figcaption className="flex items-center gap-4 pt-6 border-t border-ink/10">
+                <div className="w-12 h-12 rounded-full bg-moss-2 text-cream flex items-center justify-center font-serif italic text-xl">
+                  {q.initial}
+                </div>
+                <div>
+                  <div className="font-semibold text-moss-2 text-base">
+                    {q.name}
                   </div>
-                  {`"${review.comment}"`}
-                </CardContent>
-
-                <CardHeader>
-                  <div className="flex flex-row items-center gap-4">
-                    <Avatar>
-                      <AvatarImage
-                        src={review.image}
-                        alt={review.name}
-                      />
-                      <AvatarFallback>{review.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-                    </Avatar>
-
-                    <div className="flex flex-col">
-                      <CardTitle className="text-lg">{review.name}</CardTitle>
-                      <CardDescription>{review.userName}</CardDescription>
-                    </div>
-                  </div>
-                </CardHeader>
-              </Card>
-            </CarouselItem>
+                  <div className="text-[13px] text-ink/60">{q.role}</div>
+                </div>
+              </figcaption>
+            </figure>
           ))}
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
-    </section>
+        </div>
+      </div>
+    </div>
   );
 };

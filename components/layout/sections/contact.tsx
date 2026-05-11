@@ -1,310 +1,258 @@
 "use client";
+
 import { useState } from "react";
-import { CheckCircle2, Clock } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from "@/components/ui/card";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
 
 const formSchema = z.object({
-  name: z.string().min(2, "Name is required").max(255),
-  email: z.string().email("Valid email is required"),
-  company: z.string().optional(),
-  projectType: z.string().min(1, "Please select a project type"),
-  timeline: z.string().optional(),
-  message: z.string().min(10, "Please provide more details about your project"),
+  name: z.string().min(2, "Your name, please"),
+  email: z.string().email("A real email, please"),
+  phone: z.string().optional(),
+  business: z.string().min(2, "Tell us what you do"),
+  need: z.string().min(1, "Pick one"),
+  message: z.string().optional(),
 });
+
+type FormValues = z.infer<typeof formSchema>;
 
 export const ContactSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  
-  const form = useForm<z.infer<typeof formSchema>>({
+  const [submittedName, setSubmittedName] = useState<string | null>(null);
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
       email: "",
-      company: "",
-      projectType: "",
-      timeline: "",
+      phone: "",
+      business: "",
+      need: "",
       message: "",
     },
   });
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log('🚀 onSubmit function called!');
-    console.log('📝 Form values:', values);
-    
+  async function onSubmit(values: FormValues) {
     setIsSubmitting(true);
     try {
-      // Use FormSubmit.co - NO signup required!
       const formData = new FormData();
-      formData.append('name', values.name);
-      formData.append('email', values.email);
-      formData.append('company', values.company || 'N/A');
-      formData.append('projectType', values.projectType);
-      formData.append('timeline', values.timeline || 'Not specified');
-      formData.append('message', values.message);
-      formData.append('_subject', `New Project Inquiry: ${values.projectType}`);
-      formData.append('_template', 'table');
-      formData.append('_captcha', 'false');
+      formData.append("name", values.name);
+      formData.append("email", values.email);
+      formData.append("phone", values.phone || "N/A");
+      formData.append("business", values.business);
+      formData.append("need", values.need);
+      formData.append("message", values.message || "");
+      formData.append("_subject", `New inquiry: ${values.need} — ${values.name}`);
+      formData.append("_template", "table");
+      formData.append("_captcha", "false");
 
-      console.log('📤 Sending request to FormSubmit...');
-
-      const response = await fetch('https://formsubmit.co/samitahir018@gmail.com', {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
+      const response = await fetch(
+        "https://formsubmit.co/samitahir018@gmail.com",
+        {
+          method: "POST",
+          body: formData,
+          headers: { Accept: "application/json" },
         }
-      });
-
-      console.log('✅ Response received!');
-      console.log('Status:', response.status);
-      console.log('Status Text:', response.statusText);
-
-      const responseText = await response.text();
-      console.log('Response body:', responseText);
+      );
 
       if (response.ok) {
-        setIsSubmitted(true);
-        form.reset();
+        setSubmittedName(values.name);
+        reset();
       } else {
-        console.error('❌ Failed - Status:', response.status);
-        alert(`Something went wrong. Please try again or contact us directly.`);
+        alert("Something went wrong. Please email hello@lunolabs.com directly.");
       }
-    } catch (error) {
-      console.error('❌ ERROR:', error);
-      alert(`Error: ${error}. Check console for details.`);
+    } catch (e) {
+      alert("Couldn't send. Please email hello@lunolabs.com directly.");
     } finally {
       setIsSubmitting(false);
-      console.log('✅ Form submission complete');
     }
   }
 
   return (
-    <section id="contact" className="container py-24 sm:py-32">
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div id="contact" className="bg-moss-2 text-cream py-24 md:py-36 pb-20">
+      <div className="max-w-[1320px] mx-auto px-6 md:px-12 grid lg:grid-cols-[1fr_540px] gap-12 lg:gap-20 items-start">
         <div>
-          <div className="mb-4">
-            <h2 className="text-lg text-primary mb-2 tracking-wider">
-              Contact
-            </h2>
-
-            <h2 className="text-3xl md:text-4xl font-bold">Ready to launch?</h2>
-          </div>
-          <p className="mb-8 text-muted-foreground lg:w-5/6">
-            Tell us about your build. We&apos;ll respond with a plan and timeline.
+          <h2 className="font-serif text-cream leading-[1.0] tracking-[-0.025em] text-[44px] sm:text-[56px] md:text-[72px] lg:text-[88px]">
+            Tell us
+            <br />
+            about the
+            <br />
+            <span className="italic text-sprout-soft">thing.</span>
+          </h2>
+          <p className="text-base md:text-lg leading-relaxed text-cream/75 mt-7 max-w-[460px]">
+            A 30-minute call, no pitch deck, no obligation. You talk, we listen,
+            and at the end you&apos;ll know whether software actually solves
+            your problem — or if it&apos;s something simpler.
           </p>
-
-          <div className="flex flex-col gap-4">
-            <div>
-              <div className="flex gap-2 mb-1">
-                <Clock />
-                <div className="font-bold">Response Time</div>
-              </div>
-
-              <div>
-                <div>30 min</div>
-              </div>
-            </div>
-          </div>
+          <ul className="flex flex-col gap-4 mt-12">
+            {[
+              ["i.", "We", "listen", " first, build second."],
+              ["ii.", "We", "ship fast", " — most projects in 2–6 weeks."],
+              ["iii.", "We", "prioritize quality", " over scope."],
+            ].map(([n, pre, em, post]) => (
+              <li key={n as string} className="font-serif text-xl md:text-[22px] flex gap-3.5 items-baseline">
+                <span className="italic text-sprout-soft text-lg">{n}</span>
+                <span>
+                  {pre} <em className="italic">{em}</em>
+                  {post}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <Card className="bg-muted/60 dark:bg-card">
-          <CardHeader className="text-primary text-2xl"> </CardHeader>
-          <CardContent>
-            {isSubmitted ? (
-              <div className="flex flex-col items-center justify-center py-12 text-center animate-in fade-in slide-in-from-bottom-4 duration-500">
-                <CheckCircle2 className="w-16 h-16 text-primary mb-6" />
-                <h3 className="text-2xl font-bold mb-4">Request Received</h3>
-                <p className="text-muted-foreground text-lg max-w-sm mx-auto">
-                  Thank you for your inquiry! We&apos;ve received your request and will be in touch as soon as possible to discuss your project.
-                </p>
-                <Button 
-                  variant="outline" 
-                  className="mt-8"
-                  onClick={() => setIsSubmitted(false)}
-                >
-                  Send another inquiry
-                </Button>
+        <div className="bg-cream/[0.05] backdrop-blur-md border border-cream/15 rounded-2xl p-8 md:p-10">
+          {submittedName ? (
+            <div className="text-center py-12">
+              <div className="font-serif italic text-sprout-soft text-6xl mb-4">
+                ✓
               </div>
-            ) : (
-              <Form {...form}>
-                <form
-                  onSubmit={form.handleSubmit(onSubmit)}
-                  className="grid w-full gap-4"
-                >
-                  <FormField
-                    control={form.control}
-                    name="name"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Name *</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Your name" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
+              <h4 className="font-serif text-3xl text-cream mb-3">
+                Thanks, {submittedName}.
+              </h4>
+              <p className="text-cream/70">
+                We&apos;ll be in your inbox within the next business day.
+                <br />
+                If it&apos;s urgent: hello@lunolabs.com
+              </p>
+              <button
+                onClick={() => setSubmittedName(null)}
+                className="mt-8 text-cream/60 hover:text-sprout-soft text-sm underline"
+              >
+                Send another
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+              <Field label="Your name" error={errors.name?.message}>
+                <input
+                  className="contact-input"
+                  type="text"
+                  placeholder="Maya Okafor"
+                  {...register("name")}
+                />
+              </Field>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <Field label="Email" error={errors.email?.message}>
+                  <input
+                    className="contact-input"
+                    type="email"
+                    placeholder="maya@cedar.com"
+                    {...register("email")}
                   />
-
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Email *</FormLabel>
-                        <FormControl>
-                          <Input
-                            type="email"
-                            placeholder="you@company.com"
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
+                </Field>
+                <Field label="Phone (optional)">
+                  <input
+                    className="contact-input"
+                    type="tel"
+                    placeholder="+1 555 0149"
+                    {...register("phone")}
                   />
+                </Field>
+              </div>
 
-                  <FormField
-                    control={form.control}
-                    name="company"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Company</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Your company" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+              <Field label="What do you do?" error={errors.business?.message}>
+                <input
+                  className="contact-input"
+                  type="text"
+                  placeholder="Salon, clinic, studio, side project…"
+                  {...register("business")}
+                />
+              </Field>
 
-                  <FormField
-                    control={form.control}
-                    name="projectType"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Project Type *</FormLabel>
-                        <Select
-                          onValueChange={field.onChange}
-                          defaultValue={field.value}
-                        >
-                          <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="Select project type" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="Web App">Web App</SelectItem>
-                            <SelectItem value="Mobile App (iOS/Android)">Mobile App (iOS/Android)</SelectItem>
-                            <SelectItem value="SaaS Application">SaaS Application</SelectItem>
-                            <SelectItem value="E-commerce Platform">E-commerce Platform</SelectItem>
-                            <SelectItem value="Landing Page">Landing Page</SelectItem>
-                            <SelectItem value="Portfolio Website">Portfolio Website</SelectItem>
-                            <SelectItem value="Corporate Website">Corporate Website</SelectItem>
-                            <SelectItem value="Dashboard/Analytics Tool">Dashboard/Analytics Tool</SelectItem>
-                            <SelectItem value="API Development">API Development</SelectItem>
-                            <SelectItem value="CRM System">CRM System</SelectItem>
-                            <SelectItem value="Marketplace Platform">Marketplace Platform</SelectItem>
-                            <SelectItem value="Social Media Platform">Social Media Platform</SelectItem>
-                            <SelectItem value="Booking/Scheduling System">Booking/Scheduling System</SelectItem>
-                            <SelectItem value="Payment Integration">Payment Integration</SelectItem>
-                            <SelectItem value="Chrome Extension">Chrome Extension</SelectItem>
-                            <SelectItem value="Desktop Application">Desktop Application</SelectItem>
-                            <SelectItem value="Agentic AI">Agentic AI</SelectItem>
-                            <SelectItem value="AI Chatbot">AI Chatbot</SelectItem>
-                            <SelectItem value="Machine Learning Model">Machine Learning Model</SelectItem>
-                            <SelectItem value="Automation Tool">Automation Tool</SelectItem>
-                            <SelectItem value="Trading Bot">Trading Bot</SelectItem>
-                            <SelectItem value="Token Launch">Token Launch</SelectItem>
-                            <SelectItem value="NFT Marketplace">NFT Marketplace</SelectItem>
-                            <SelectItem value="DeFi Platform">DeFi Platform</SelectItem>
-                            <SelectItem value="Smart Contracts">Smart Contracts</SelectItem>
-                            <SelectItem value="Blockchain/Web3 Project">Blockchain/Web3 Project</SelectItem>
-                            <SelectItem value="Game Development">Game Development</SelectItem>
-                            <SelectItem value="IoT Application">IoT Application</SelectItem>
-                            <SelectItem value="Database Design">Database Design</SelectItem>
-                            <SelectItem value="Cloud Migration">Cloud Migration</SelectItem>
-                            <SelectItem value="DevOps/CI-CD Setup">DevOps/CI-CD Setup</SelectItem>
-                            <SelectItem value="UI/UX Design">UI/UX Design</SelectItem>
-                            <SelectItem value="Consulting">Consulting</SelectItem>
-                            <SelectItem value="Other">Other</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+              <Field label="What do you need built?" error={errors.need?.message}>
+                <select className="contact-input" {...register("need")}>
+                  <option value="">Choose one…</option>
+                  <option value="A booking system">A booking system</option>
+                  <option value="A website">A website</option>
+                  <option value="AI automation / workflow tools">
+                    AI automation / workflow tools
+                  </option>
+                  <option value="Something custom">Something custom</option>
+                  <option value="Honestly, not sure yet">
+                    Honestly, not sure yet
+                  </option>
+                </select>
+              </Field>
 
-                  <FormField
-                    control={form.control}
-                    name="timeline"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Timeline</FormLabel>
-                        <FormControl>
-                          <Input placeholder="e.g., ASAP, 2-4 weeks, flexible" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+              <Field label="Anything else?">
+                <textarea
+                  className="contact-input resize-y min-h-[80px]"
+                  rows={3}
+                  placeholder="Tell us a bit about the problem you're trying to solve…"
+                  {...register("message")}
+                />
+              </Field>
 
-                  <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Message *</FormLabel>
-                        <FormControl>
-                          <Textarea
-                            rows={5}
-                            placeholder="Tell us about your project..."
-                            className="resize-none"
-                            {...field}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-cream text-moss-2 py-4 rounded-full text-[15px] font-bold hover:bg-sprout-soft hover:-translate-y-0.5 transition-all disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2.5"
+              >
+                {isSubmitting ? "Sending…" : "Send it"}
+                <span aria-hidden>→</span>
+              </button>
+            </form>
+          )}
+        </div>
+      </div>
 
-                  <Button className="mt-4" type="submit" disabled={isSubmitting}>
-                    {isSubmitting ? 'Sending...' : 'Request proposal'}
-                  </Button>
-                </form>
-              </Form>
-            )}
-          </CardContent>
-
-          <CardFooter></CardFooter>
-        </Card>
-      </section>
-    </section>
+      <style jsx>{`
+        :global(.contact-input) {
+          width: 100%;
+          background: transparent;
+          border: none;
+          border-bottom: 1px solid hsl(var(--cream) / 0.25);
+          padding: 12px 0;
+          color: hsl(var(--cream));
+          font-family: inherit;
+          font-size: 16px;
+          outline: none;
+          transition: border-color 0.2s;
+        }
+        :global(.contact-input:focus) {
+          border-bottom-color: hsl(var(--sprout-soft));
+        }
+        :global(.contact-input::placeholder) {
+          color: hsl(var(--cream) / 0.4);
+          font-family: "Times New Roman", Times, serif;
+          font-style: italic;
+        }
+        :global(.contact-input option) {
+          background: hsl(var(--moss-2));
+          color: hsl(var(--cream));
+        }
+      `}</style>
+    </div>
   );
 };
+
+function Field({
+  label,
+  error,
+  children,
+}: {
+  label: string;
+  error?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <label className="block">
+      <span className="block text-[12px] tracking-[0.15em] uppercase text-cream/70 mb-2.5">
+        {label}
+      </span>
+      {children}
+      {error && (
+        <span className="block text-[12px] text-sprout-soft mt-1.5 italic font-serif">
+          {error}
+        </span>
+      )}
+    </label>
+  );
+}

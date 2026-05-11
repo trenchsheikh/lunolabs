@@ -21,6 +21,10 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["var(--font-manrope)", "ui-sans-serif", "system-ui", "sans-serif"],
+        serif: ['"Times New Roman"', "Times", "serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -55,14 +59,22 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        luno: {
-          green: {
-            dark: "#2FA86B",
-            light: "#2FA86B",
-          },
-          cream: "#F3EFE5",
-          ink: "#0B1B16",
+        cream: {
+          DEFAULT: "hsl(var(--cream))",
+          2: "hsl(var(--cream-2))",
+          3: "hsl(var(--cream-3))",
         },
+        ink: "hsl(var(--ink))",
+        moss: {
+          DEFAULT: "hsl(var(--moss))",
+          2: "hsl(var(--moss-2))",
+        },
+        sprout: {
+          DEFAULT: "hsl(var(--sprout))",
+          2: "hsl(var(--sprout-2))",
+          soft: "hsl(var(--sprout-soft))",
+        },
+        warm: "hsl(var(--warm))",
       },
       borderRadius: {
         xl: "calc(var(--radius) + 4px)",
@@ -72,20 +84,20 @@ module.exports = {
       },
       keyframes: {
         "accordion-down": {
-          from: { height: 0 },
+          from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
           from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: 0 },
+          to: { height: "0" },
         },
         "collapsible-down": {
-          from: { height: 0 },
+          from: { height: "0" },
           to: { height: "var(--radix-collapsible-content-height)" },
         },
         "collapsible-up": {
           from: { height: "var(--radix-collapsible-content-height)" },
-          to: { height: 0 },
+          to: { height: "0" },
         },
       },
       animation: {
