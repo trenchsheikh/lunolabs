@@ -10,9 +10,9 @@ const QUOTES: Quote[] = [
     text: (
       <>
         The team listened more than they talked, which was already unusual.
-        Then they shipped{" "}
-        <span className="italic text-sprout">in four weeks</span> what another
-        agency had quoted us six months for.
+        Then they{" "}
+        <span className="italic text-sprout">delivered working software</span>{" "}
+        while we were still comparing polite proposals from other shops.
       </>
     ),
     initial: "M",
@@ -36,8 +36,8 @@ const QUOTES: Quote[] = [
       <>
         We replaced three tools and a spreadsheet with one quiet dashboard. The
         team gets back{" "}
-        <span className="italic text-sprout">about an hour a day,</span> every
-        day.
+        <span className="italic text-sprout">real capacity</span> — fewer
+        copy-paste loops and fewer panic fixes.
       </>
     ),
     initial: "A",

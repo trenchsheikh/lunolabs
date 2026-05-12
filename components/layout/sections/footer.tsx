@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 export const FooterSection = () => {
   const currentYear = new Date().getFullYear();
 
@@ -15,25 +13,8 @@ export const FooterSection = () => {
           <span className="italic text-sprout-soft">quiet care.</span>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pt-8 border-t border-cream/15 text-[13px] text-cream/60">
-          <div>
-            © {currentYear} Luno Labs ·{" "}
-            <em className="font-serif">since 2022</em>
-          </div>
-          <div className="flex gap-6 md:gap-8">
-            <Link href="#" className="hover:text-sprout-soft transition-colors">
-              Privacy
-            </Link>
-            <Link href="#" className="hover:text-sprout-soft transition-colors">
-              Terms
-            </Link>
-            <Link
-              href="mailto:hello@lunolabs.com"
-              className="hover:text-sprout-soft transition-colors"
-            >
-              hello@lunolabs.com
-            </Link>
-          </div>
+        <div className="pt-8 border-t border-cream/15 text-[13px] text-cream/60 text-center">
+          © {currentYear} Luno Labs · <em className="font-serif">since 2022</em>
         </div>
       </div>
     </footer>

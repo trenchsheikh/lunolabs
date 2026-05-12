@@ -106,7 +106,6 @@ export const PricingSection = () => {
 
                 <div>
                   <span className="text-3xl font-bold">${price}</span>
-                  <span className="text-muted-foreground"> /month</span>
                 </div>
               </CardHeader>
 

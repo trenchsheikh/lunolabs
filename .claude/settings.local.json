@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:api.anthropic.com)",
+      "Bash(mkdir -p /tmp/design)",
+      "Bash(tar -xzf \"C:/Users/stahi/.claude/projects/D--lunolabs/13917d1b-f96d-4477-af19-b5c39b95bfb1/tool-results/webfetch-1778537069704-ew9z5j.bin\" -C /tmp/design)",
+      "Read(//tmp/**)",
+      "PowerShell(Test-Path *)",
+      "Bash(git checkout *)",
+      "Bash(npm run *)",
+      "Bash(gh auth *)",
+      "PowerShell(gh auth *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(npx next *)",
+      "Bash(npx tsc *)",
+      "Bash(curl -s http://localhost:3123/ -o /tmp/page.html -w \"%{http_code}\\\\n\")",
+      "Bash(curl -s -o /dev/null -w \"sami.jpg: %{http_code}\\\\n\" \"http://localhost:3123/_next/image?url=%2Fsami.jpg&w=640&q=75\")",
+      "Bash(curl -s -o /dev/null -w \"work/valuto.png: %{http_code}\\\\n\" \"http://localhost:3123/_next/image?url=%2Fwork%2Fvaluto.png&w=640&q=75\")",
+      "Bash(curl -s -o /dev/null -w \"Luno-logo.png: %{http_code}\\\\n\" \"http://localhost:3123/Luno-logo.png\")",
+      "Bash(node -e \"console.log\\(require\\('puppeteer'\\) ? 'puppeteer ok':'no'\\)\")"
+    ]
+  }
+}

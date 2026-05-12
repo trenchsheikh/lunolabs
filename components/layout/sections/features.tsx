@@ -14,7 +14,7 @@ const BUILDS: BuildCardProps[] = [
       </>
     ),
     description:
-      "The waiting list, the no-shows, the WhatsApp messages at 11pm — gone. We build calendar systems that fit how you actually work, with deposits, reminders, and a dashboard your front-desk can actually use.",
+      "The waiting list, the no-shows, the WhatsApp messages at odd hours — gone. We build calendar systems that fit how you actually work, with deposits, reminders, and a dashboard your front-desk can actually use.",
     tags: ["salons", "clinics", "studios", "trades"],
   },
   {
@@ -25,7 +25,7 @@ const BUILDS: BuildCardProps[] = [
       </>
     ),
     description:
-      "A real website — fast, beautiful, and pointed straight at the thing you want people to do. Whether that's a booking, a quote, or a phone call. We measure what works and rebuild what doesn't.",
+      "A real website — clear, beautiful, and pointed straight at the thing you want people to do. Whether that's a booking, a quote, or a phone call. We measure what works and rebuild what doesn't.",
     tags: ["landing", "e-commerce", "portfolios", "menus"],
   },
   {

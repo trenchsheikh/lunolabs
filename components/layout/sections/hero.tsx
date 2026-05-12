@@ -1,15 +1,11 @@
 "use client";
 
-import Link from "next/link";
+import { CalendlyBookButton } from "@/components/calendly-book-button";
+import { NavHashLink } from "@/components/layout/nav-hash-link";
 import { useEffect, useState } from "react";
 
-const ROTATIONS = [
-  "booking system",
-  "website",
-  "AI assistant",
-  "dashboard",
-  "customer portal",
-];
+/** Short single-line words so the hero headline doesn’t wrap mid-phrase */
+const ROTATIONS = ["website", "dashboard", "booking", "portal", "app"];
 
 export const HeroSection = () => {
   const [idx, setIdx] = useState(0);
@@ -27,36 +23,16 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative max-w-[1320px] mx-auto px-6 md:px-12 pt-16 pb-20 md:pt-24 md:pb-24">
-      {/* decorative leaf */}
-      <svg
-        className="absolute right-0 top-24 w-[280px] h-[280px] opacity-[0.08] pointer-events-none hidden md:block"
-        viewBox="0 0 200 200"
-        fill="none"
-        aria-hidden
-      >
-        <path
-          d="M100 20 C 140 40, 170 80, 170 130 C 170 165, 140 180, 100 180 C 60 180, 30 165, 30 130 C 30 80, 60 40, 100 20 Z"
-          stroke="hsl(var(--moss))"
-          strokeWidth="1"
-          fill="none"
-        />
-        <path d="M100 20 L 100 180" stroke="hsl(var(--moss))" strokeWidth="1" />
-        <path d="M100 60 Q 70 80, 60 110" stroke="hsl(var(--moss))" strokeWidth="1" fill="none" />
-        <path d="M100 60 Q 130 80, 140 110" stroke="hsl(var(--moss))" strokeWidth="1" fill="none" />
-        <path d="M100 110 Q 70 120, 55 145" stroke="hsl(var(--moss))" strokeWidth="1" fill="none" />
-        <path d="M100 110 Q 130 120, 145 145" stroke="hsl(var(--moss))" strokeWidth="1" fill="none" />
-      </svg>
-
-      <div className="inline-flex items-center gap-2.5 font-serif italic text-base text-moss/70 mb-8">
+    <section className="relative max-w-[1320px] mx-auto px-6 md:px-12 pt-16 pb-20 md:pt-24 md:pb-24 overflow-x-clip">
+      <div className="inline-flex items-center gap-2.5 font-serif italic text-base text-moss/70 mb-8 hero-enter">
         <span className="pulse-dot inline-block w-2 h-2 rounded-full bg-sprout" />
         <span>A software studio for people without software</span>
       </div>
 
-      <h1 className="font-serif text-moss-2 leading-[0.95] tracking-[-0.03em] text-[56px] sm:text-[72px] md:text-[96px] lg:text-[124px] max-w-[1200px]">
+      <h1 className="font-serif text-moss-2 leading-[0.95] tracking-[-0.03em] text-[56px] sm:text-[72px] md:text-[96px] lg:text-[124px] max-w-[1200px] hero-enter hero-enter-delay-1">
         We build the{" "}
         <span
-          className="italic text-sprout inline-block transition-opacity duration-300"
+          className="italic text-sprout inline-block transition-opacity duration-300 ease-out"
           style={{ opacity: visible ? 1 : 0 }}
         >
           {ROTATIONS[idx]}
@@ -67,7 +43,7 @@ export const HeroSection = () => {
       </h1>
 
       <div className="grid md:grid-cols-[1fr_380px] gap-10 md:gap-20 mt-16 md:mt-20 items-end">
-        <div>
+        <div className="hero-enter hero-enter-delay-2">
           <p className="text-lg md:text-[22px] leading-relaxed text-ink max-w-[560px]">
             Most small businesses run on sticky notes, group chats and a prayer.
             We&apos;re a small studio that{" "}
@@ -77,23 +53,24 @@ export const HeroSection = () => {
           </p>
 
           <div className="flex flex-wrap gap-4 mt-12 md:mt-14 items-center">
-            <Link
-              href="#contact"
-              className="group inline-flex items-center gap-3 bg-moss-2 text-cream px-9 py-[18px] rounded-full text-[15px] font-semibold hover:bg-sprout hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(47,168,107,0.3)] transition-all"
-            >
-              Book a free consultation
-              <span className="transition-transform group-hover:translate-x-1">→</span>
-            </Link>
-            <Link
+            <CalendlyBookButton className="group inline-flex items-center gap-3 bg-moss-2 text-cream px-9 py-[18px] rounded-full text-[15px] font-semibold shadow-sm hover:bg-sprout hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(47,168,107,0.3)] transition-all duration-300 ease-out active:translate-y-0 active:scale-[0.97] motion-reduce:hover:translate-y-0 motion-reduce:active:scale-100">
+              Book a meeting
+              <span className="transition-transform duration-300 ease-out group-hover:translate-x-1">
+                →
+              </span>
+            </CalendlyBookButton>
+            <NavHashLink
               href="#work"
-              className="text-moss-2 text-[15px] font-medium px-6 py-[18px] border-b border-moss-2 hover:text-sprout hover:border-sprout transition-colors"
+              className="group text-moss-2 text-[15px] font-medium px-6 py-[18px] rounded-full border border-transparent hover:border-ink/15 hover:bg-ink/[0.03] transition-all duration-300 ease-out"
             >
-              See our work
-            </Link>
+              <span className="border-b border-moss-2 group-hover:border-sprout pb-0.5 transition-colors duration-300">
+                See our work
+              </span>
+            </NavHashLink>
           </div>
         </div>
 
-        <aside className="border-l border-ink/15 pl-8">
+        <aside className="border-l border-ink/15 pl-8 hero-enter hero-enter-delay-3">
           <div className="text-[11px] tracking-[0.2em] uppercase text-moss/60 mb-3">
             How we work
           </div>
@@ -104,7 +81,7 @@ export const HeroSection = () => {
             </li>
             <li className="font-serif text-2xl text-moss-2 leading-tight">
               <span className="italic text-sprout text-lg mr-2">ii.</span>
-              We <em className="italic">ship fast.</em>
+              We <em className="italic">ship with care.</em>
             </li>
             <li className="font-serif text-2xl text-moss-2 leading-tight">
               <span className="italic text-sprout text-lg mr-2">iii.</span>
