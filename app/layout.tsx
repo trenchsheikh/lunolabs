@@ -3,6 +3,7 @@ import { Manrope } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { CalendlyBadgeWidget } from "@/components/calendly-badge-widget";
+import { LenisProvider } from "@/components/layout/lenis-provider";
 import { Navbar } from "@/components/layout/navbar";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 
@@ -32,15 +33,17 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={manrope.variable}>
       <body className={cn("min-h-screen bg-background text-foreground", manrope.className)}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem={false}
-          disableTransitionOnChange
-        >
-          <Navbar />
-          {children}
-        </ThemeProvider>
+        <LenisProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="light"
+            enableSystem={false}
+            disableTransitionOnChange
+          >
+            <Navbar />
+            {children}
+          </ThemeProvider>
+        </LenisProvider>
         <CalendlyBadgeWidget />
       </body>
     </html>

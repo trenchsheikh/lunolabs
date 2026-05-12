@@ -51,15 +51,6 @@ export const ContactSection = () => {
               →
             </span>
           </CalendlyBookButton>
-          <p className="mt-8 text-sm text-cream/55">
-            Prefer email?{" "}
-            <a
-              href="mailto:hello@lunolabs.com"
-              className="text-cream/80 underline underline-offset-2 hover:text-sprout-soft transition-colors"
-            >
-              hello@lunolabs.com
-            </a>
-          </p>
         </div>
       </div>
     </section>

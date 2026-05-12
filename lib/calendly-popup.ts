@@ -44,26 +44,30 @@ export function runWhenCalendlyReady(callback: () => void): void {
 
   ensureCalendlyStylesheet();
 
-  const run = () => {
-    if (window.Calendly) callback();
+  let fired = false;
+  const fire = () => {
+    if (fired || !window.Calendly) return;
+    fired = true;
+    callback();
   };
 
   if (window.Calendly) {
-    run();
+    fire();
     return;
   }
 
   const existing = document.querySelector<HTMLScriptElement>(SCRIPT_SELECTOR);
   if (existing) {
-    if (window.Calendly) run();
-    else existing.addEventListener("load", run, { once: true });
+    existing.addEventListener("load", fire, { once: true });
+    // If the script already finished loading before we attached `load`, pick it up here.
+    queueMicrotask(fire);
     return;
   }
 
   const script = document.createElement("script");
   script.src = WIDGET_JS;
   script.async = true;
-  script.onload = run;
+  script.onload = fire;
   document.body.appendChild(script);
 }
 

@@ -37,7 +37,7 @@ const FAQS: FAQ[] = [
   {
     value: "f5",
     q: "What happens after launch — are you gone for good?",
-    a: "After launch, we stay hands-on for fixes, tweaks, and training your team — on us. After that, you can absolutely take the keys and run solo — you own what we build. Many clients choose to stay on a simple care plan: we keep an eye on the site, handle bugs, watch analytics with you, and make small updates and improvements so nothing quietly rots while you're busy running the shop. It's optional, not a trap — just steady peace of mind if you want it.",
+    a: "Right after launch we get you over the line properly: fixes, tweaks, and walking your team through how things work — that's part of shipping, not a bait-and-switch. Once you're steady, the keys are yours; you own what we build and you can run solo whenever you like. If you want us in the loop after that, lots of clients opt into a simple monthly care plan — predictable cost, and we do the ongoing stuff (site checks, bugs, analytics with you, small updates and improvements) so nothing quietly rots while you're busy running the shop. That's optional and cancellable — not unlimited forever 'on us,' just steady peace of mind if you'd rather pay monthly than carry every little thing yourself.",
   },
   {
     value: "f6",

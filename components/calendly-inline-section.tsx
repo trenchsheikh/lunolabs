@@ -1,55 +1,68 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { CALENDLY_URL } from "@/lib/calendly";
+import { CALENDLY_INLINE_URL } from "@/lib/calendly";
 import { runWhenCalendlyReady } from "@/lib/calendly-popup";
 
 export function CalendlyInlineSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const widgetRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = containerRef.current;
+    const el = widgetRef.current;
     if (!el) return;
 
     let cancelled = false;
+    let observer: IntersectionObserver | null = null;
 
     const mountWidget = () => {
       if (cancelled || !window.Calendly?.initInlineWidget) return;
-      el.innerHTML = "";
-      window.Calendly.initInlineWidget({
-        url: CALENDLY_URL,
-        parentElement: el,
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (cancelled || !window.Calendly?.initInlineWidget) return;
+          el.innerHTML = "";
+          window.Calendly.initInlineWidget({
+            url: CALENDLY_INLINE_URL,
+            parentElement: el,
+          });
+        });
       });
     };
 
-    runWhenCalendlyReady(mountWidget);
+    const start = () => {
+      if (cancelled) return;
+      runWhenCalendlyReady(mountWidget);
+    };
+
+    if (typeof IntersectionObserver === "undefined") {
+      start();
+    } else {
+      observer = new IntersectionObserver(
+        (entries) => {
+          if (!entries[0]?.isIntersecting) return;
+          observer?.disconnect();
+          observer = null;
+          start();
+        },
+        { rootMargin: "240px 0px", threshold: 0.01 },
+      );
+      observer.observe(el);
+    }
 
     return () => {
       cancelled = true;
+      observer?.disconnect();
       el.innerHTML = "";
     };
   }, []);
 
   return (
-    <section
-      aria-label="Book a call"
-      className="border-t border-ink/10 bg-background py-16 md:py-24"
-    >
-      <div className="max-w-[1320px] mx-auto px-6 md:px-12">
-        <div className="flex items-center gap-4 mb-8 md:mb-10">
-          <span className="font-serif italic text-sprout text-lg">v.</span>
-          <span className="text-xs tracking-[0.25em] uppercase text-moss font-semibold">
-            Book a call
-          </span>
-          <span className="flex-1 h-px bg-ink/15" />
-        </div>
-        <div
-          ref={containerRef}
-          className="calendly-inline-widget mx-auto w-full max-w-[1000px] rounded-2xl overflow-hidden border border-ink/10 bg-card shadow-[0_1px_0_rgba(11,27,22,0.06)]"
-          data-url={CALENDLY_URL}
-          style={{ minWidth: 320, height: 700 }}
-        />
-      </div>
+    <section aria-label="Schedule a call" className="w-full border-t border-ink/10 bg-background">
+      <div
+        ref={widgetRef}
+        className="calendly-inline-widget w-full"
+        data-url={CALENDLY_INLINE_URL}
+        style={{ minWidth: 320, minHeight: 720, height: 720 }}
+      />
     </section>
   );
 }

@@ -1,7 +1,8 @@
 "use client";
 
-import type { ComponentPropsWithoutRef } from "react";
 import { openCalendlyPopup } from "@/lib/calendly-popup";
+import { cn } from "@/lib/utils";
+import type { ComponentPropsWithoutRef } from "react";
 
 type Props = ComponentPropsWithoutRef<"button">;
 
@@ -15,7 +16,11 @@ export function CalendlyBookButton({
   return (
     <button
       type={type}
-      className={className}
+      className={cn(
+        "transition-[transform,box-shadow,background-color] duration-300 ease-out",
+        "active:scale-[0.97] motion-reduce:active:scale-100",
+        className
+      )}
       onClick={(e) => {
         onClick?.(e);
         openCalendlyPopup();
