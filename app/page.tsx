@@ -10,29 +10,7 @@ import { SelectedWorkSection } from "@/components/layout/sections/selected-work"
 import { TeamSection } from "@/components/layout/sections/team";
 import { TestimonialSection } from "@/components/layout/sections/testimonial";
 
-export const metadata = {
-  title: "Luno Labs — We listen, then we build",
-  description:
-    "A small studio for small businesses without software. Booking systems, websites, and AI automations — calm builds, made to last.",
-  openGraph: {
-    type: "website",
-    title: "Luno Labs — We listen, then we build",
-    description:
-      "A small studio for small businesses without software. Booking systems, websites, and AI automations — calm builds, made to last.",
-    siteName: "Luno Labs",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Luno Labs — We listen, then we build",
-    description:
-      "A small studio for small businesses without software. Booking systems, websites, and AI automations — calm builds, made to last.",
-  },
-  icons: {
-    icon: "/Luno-logo.png",
-    shortcut: "/Luno-logo.png",
-    apple: "/Luno-logo.png",
-  },
-};
+// Site-wide metadata (title, description, OG, canonical, robots) lives in app/layout.tsx.
 
 export default function Home() {
   return (
@@ -42,16 +20,16 @@ export default function Home() {
         <FeaturesSection />
       </ScrollReveal>
       <ScrollReveal stagger={1}>
-        <BenefitsSection />
+        <TeamSection />
       </ScrollReveal>
       <ScrollReveal stagger={2}>
+        <BenefitsSection />
+      </ScrollReveal>
+      <ScrollReveal stagger={3}>
         <SelectedWorkSection />
       </ScrollReveal>
-      <ScrollReveal stagger={3} variant="soft">
+      <ScrollReveal stagger={4} variant="soft">
         <TestimonialSection />
-      </ScrollReveal>
-      <ScrollReveal stagger={4}>
-        <TeamSection />
       </ScrollReveal>
       <ScrollReveal stagger={5}>
         <FAQSection />

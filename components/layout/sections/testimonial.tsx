@@ -36,8 +36,8 @@ const QUOTES: Quote[] = [
       <>
         We replaced three tools and a spreadsheet with one quiet dashboard. The
         team gets back{" "}
-        <span className="italic text-sprout">real capacity</span> — fewer
-        copy-paste loops and fewer panic fixes.
+        <span className="italic text-sprout">real capacity</span>, fewer
+        copy paste loops and fewer panic fixes.
       </>
     ),
     initial: "A",

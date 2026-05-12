@@ -14,7 +14,7 @@ const BUILDS: BuildCardProps[] = [
       </>
     ),
     description:
-      "The waiting list, the no-shows, the WhatsApp messages at odd hours — gone. We build calendar systems that fit how you actually work, with deposits, reminders, and a dashboard your front-desk can actually use.",
+      "The waiting list, the no shows, the WhatsApp messages at odd hours, gone. We build calendar systems that fit how you actually work, with deposits, reminders, and a dashboard your front desk can actually use.",
     tags: ["salons", "clinics", "studios", "trades"],
   },
   {
@@ -25,8 +25,8 @@ const BUILDS: BuildCardProps[] = [
       </>
     ),
     description:
-      "A real website — clear, beautiful, and pointed straight at the thing you want people to do. Whether that's a booking, a quote, or a phone call. We measure what works and rebuild what doesn't.",
-    tags: ["landing", "e-commerce", "portfolios", "menus"],
+      "A real website: clear, beautiful, and pointed straight at the thing you want people to do. Whether that's a booking, a quote, or a phone call. We measure what works and rebuild what doesn't.",
+    tags: ["landing", "ecommerce", "portfolios", "menus"],
   },
   {
     num: "03.",
@@ -37,7 +37,7 @@ const BUILDS: BuildCardProps[] = [
     ),
     description:
       "Quiet little workers that handle the inbox, draft the reply, follow up with the lead, and surface only what you actually need to see. Tuned to your tone of voice, not a generic chatbot.",
-    tags: ["inbox", "follow-up", "scheduling", "research"],
+    tags: ["inbox", "follow up", "scheduling", "research"],
   },
   {
     num: "04.",
@@ -71,8 +71,10 @@ export const FeaturesSection = () => {
         Not the other way around.
       </h2>
       <p className="text-lg md:text-xl leading-relaxed text-ink/75 max-w-[620px] mt-7">
-        Three core practices, all under one roof. We start with whichever one
-        your business needs right now, and grow from there.
+        Custom software for small businesses: booking systems, websites, AI
+        automations, and the internal tools you&apos;ve been wishing existed,
+        all under one roof. We start with whichever one your business needs
+        right now, and grow from there.
       </p>
 
       <div className="grid sm:grid-cols-2 gap-0 mt-16 md:mt-20 border-t border-ink/15">

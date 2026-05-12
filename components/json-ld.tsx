@@ -16,17 +16,17 @@ const SERVICES = [
   {
     name: "Custom booking system development",
     description:
-      "Calendar and appointment booking software for salons, clinics, studios and trades — deposits, reminders, and an admin dashboard.",
+      "Calendar and appointment booking software for salons, clinics, studios and trades: deposits, reminders, and an admin dashboard.",
   },
   {
     name: "Website & web app development",
     description:
-      "Fast, conversion-focused websites and web apps for small businesses, built and measured.",
+      "Fast, conversion focused websites and web apps for small businesses, built and measured.",
   },
   {
     name: "AI automation for small business",
     description:
-      "Lightweight AI workflows: inbox triage, drafted replies in your voice, lead follow-up, scheduling and research assistants.",
+      "Lightweight AI workflows: inbox triage, drafted replies in your voice, lead follow up, scheduling and research assistants.",
   },
   {
     name: "Custom internal tools & dashboards",
@@ -52,7 +52,7 @@ export function OrganizationJsonLd() {
         foundingDate: "2022",
         slogan: "We listen, then we build.",
         description:
-          "A small software studio that builds custom booking systems, websites, internal tools and AI automations for small businesses — calmly, fast, and made to last.",
+          "A small software studio that builds custom booking systems, websites, internal tools and AI automations for small businesses: calmly, fast, and made to last.",
         founder: {
           "@type": "Person",
           name: "Sami Tahir",
