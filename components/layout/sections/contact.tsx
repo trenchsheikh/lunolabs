@@ -16,14 +16,14 @@ export const ContactSection = () => {
             <span className="italic text-sprout-soft">thing.</span>
           </h2>
           <p className="text-base md:text-lg leading-relaxed text-cream/75 mt-7 max-w-[460px]">
-            A relaxed conversation — no pitch deck, no obligation. You talk, we
+            A relaxed conversation: no pitch deck, no obligation. You talk, we
             listen, and at the end you&apos;ll know whether software actually
-            solves your problem — or if it&apos;s something simpler.
+            solves your problem, or if it&apos;s something simpler.
           </p>
           <ul className="flex flex-col gap-4 mt-12">
             {[
               ["i.", "We", "listen", " first, build second."],
-              ["ii.", "We", "cut noise", " — without the usual agency crawl."],
+              ["ii.", "We", "cut noise", ", without the usual agency crawl."],
               ["iii.", "We", "prioritize quality", " over scope."],
             ].map(([n, pre, em, post]) => (
               <li
@@ -43,7 +43,7 @@ export const ContactSection = () => {
         <div className="bg-cream/[0.05] backdrop-blur-md border border-cream/15 rounded-2xl p-8 md:p-10">
           <p className="text-base md:text-lg leading-relaxed text-cream/80 mb-8">
             Grab a slot on the calendar. You&apos;ll get a confirmation and a
-            short note so we show up informed — no forms, no inbox ping-pong.
+            short note so we show up informed, no forms, no inbox ping pong.
           </p>
           <CalendlyBookButton className="group inline-flex w-full items-center justify-center gap-3 bg-cream text-moss-2 px-9 py-[18px] rounded-full text-[15px] font-semibold hover:bg-sprout-soft hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(111,212,155,0.35)] transition-all">
             Book a meeting

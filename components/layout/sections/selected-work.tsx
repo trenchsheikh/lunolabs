@@ -13,52 +13,52 @@ const PROJECTS: Project[] = [
   {
     name: "Mayfair Motors",
     image: "/work/mayfair-motors.png",
-    blurb: "Luxury rental — full web app & integrated booking.",
-    impact: "End-to-end product",
+    blurb: "Luxury rental: full web app and integrated booking.",
+    impact: "End to end product",
   },
   {
     name: "Lobsmash",
     image: "/work/lobsmash.png",
-    blurb: "Padel analytics — algorithms, AI, and product design.",
+    blurb: "Padel analytics: algorithms, AI, and product design.",
     impact: "Deep player intelligence",
     href: "https://www.lobsmash.com",
   },
   {
     name: "Kurek Hersi",
     image: "/work/kurek-hersi.png",
-    blurb: "Premium brand site — sharp and confident.",
-    impact: "Lean collaboration · focused kickoff",
+    blurb: "Premium brand site: sharp and confident.",
+    impact: "Lean collaboration",
     href: "https://www.kurekhersi.com",
   },
   {
     name: "Asterlite",
     image: "/work/asterlite.png",
-    blurb: "Telegram futures bot — high-stakes, high-care build.",
-    impact: "$3M+ volume · live product",
+    blurb: "Telegram futures bot: high stakes, high care build.",
+    impact: "$3M+ volume, live product",
   },
   {
     name: "Prompture Group",
     image: "/work/prompture-group.png",
-    blurb: "London trades — first serious digital presence.",
+    blurb: "London trades: first serious digital presence.",
     impact: "Digital transformation",
   },
   {
     name: "Valuto",
     image: "/work/valuto.png",
     blurb: "Money skills for young people, wired into schools.",
-    impact: "Liverpool schools · 11–18",
+    impact: "Liverpool schools, 11 to 18",
   },
   {
     name: "Shariff Sufi Foundation",
     image: "/work/shariff-sufi-foundation.png",
-    blurb: "Camden charity — mission-led site on an urgent brief.",
-    impact: "Tight brief · delivered clean",
+    blurb: "Camden charity: mission led site on an urgent brief.",
+    impact: "Tight brief, delivered clean",
   },
   {
     name: "Omar Technical School",
     image: "/work/omar-technical-school.png",
-    blurb: "Elite youth football — booking built for every athlete.",
-    impact: "Coach-grade booking",
+    blurb: "Elite youth football: booking built for every athlete.",
+    impact: "Coach grade booking",
     href: "https://www.omartechnicalschool.com",
   },
 ];
@@ -69,7 +69,7 @@ function ProjectCard({ p }: { p: Project }) {
       <div className="relative aspect-[16/11] w-full bg-cream-2">
         <Image
           src={p.image}
-          alt={`${p.name} — product screenshot`}
+          alt={`${p.name}: product screenshot`}
           fill
           className="object-cover object-top"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
@@ -136,8 +136,8 @@ export const SelectedWorkSection = () => {
           <span className="italic text-sprout">Sharp</span> when it counts.
         </h2>
         <p className="text-lg md:text-xl leading-relaxed text-ink/70 lg:text-right lg:max-w-none">
-          Product, brand, and backend — handled with the same attention to
-          detail at every scale — from a tight brief to a full product.
+          Product, brand, and backend: handled with the same attention to
+          detail at every scale, from a tight brief to a full product.
         </p>
       </div>
 

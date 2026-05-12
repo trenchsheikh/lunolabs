@@ -14,7 +14,7 @@ export const FooterSection = () => {
         </div>
 
         <div className="pt-8 border-t border-cream/15 text-[13px] text-cream/60 text-center">
-          © {currentYear} Luno Labs · <em className="font-serif">since 2022</em>
+          © {currentYear} Luno Labs, <em className="font-serif">since 2022</em>
         </div>
       </div>
     </footer>

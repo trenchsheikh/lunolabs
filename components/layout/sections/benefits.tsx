@@ -21,7 +21,7 @@ const PROCESS: ProcessRow[] = [
         We <span className="italic">sketch</span>
       </>
     ),
-    desc: "After we understand the shape of the work, you get a one-page scope: what we'll build, what we won't, the price, and what \"done\" looks like. If it doesn't feel right, we redraft. No commitment yet.",
+    desc: "After we understand the shape of the work, you get a one page scope: what we'll build, what we won't, the price, and what \"done\" looks like. If it doesn't feel right, we redraft. No commitment yet.",
   },
   {
     num: "03",
@@ -30,7 +30,7 @@ const PROCESS: ProcessRow[] = [
         We <span className="italic">build</span>
       </>
     ),
-    desc: "We work in tight loops with real previews you can click through — not slideware behind a curtain. You comment, we adjust. No agency theatre.",
+    desc: "We work in tight loops with real previews you can click through, not slideware behind a curtain. You comment, we adjust. No agency theatre.",
   },
   {
     num: "04",
@@ -39,7 +39,7 @@ const PROCESS: ProcessRow[] = [
         We <span className="italic">tend</span>
       </>
     ),
-    desc: "After launch, we stay close for fixes, training, and polish on us. Then an optional care plan if you want us around while you run the business. No lock-ins.",
+    desc: "After launch, we stay close for fixes, training, and polish on us. Then an optional care plan if you want us around while you run the business. No lock ins.",
   },
 ];
 

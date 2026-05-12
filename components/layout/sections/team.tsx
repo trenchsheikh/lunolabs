@@ -10,7 +10,7 @@ const FACTS: Fact[] = [
     k: "Background",
     v: (
       <>
-        Ex-IBM · Google HQ{" "}
+        Ex IBM, Google HQ{" "}
         <span className="italic text-sprout">AI educator</span>
       </>
     ),
@@ -74,7 +74,7 @@ export const TeamSection = () => {
             />
           </div>
           <div className="font-serif italic text-sm text-moss/60 mt-3 text-right">
-            Sami, in his natural habitat — fixing something.
+            Sami, in his natural habitat, fixing something.
           </div>
         </div>
 
@@ -88,7 +88,7 @@ export const TeamSection = () => {
           <p className="text-[17px] leading-relaxed text-ink/85 max-w-[580px] mb-4">
             Sami started Luno Labs in 2022 because too many small businesses
             were being sold software they didn&apos;t need by people who
-            wouldn&apos;t return their calls. He&apos;s an ex-IBM engineer, led
+            wouldn&apos;t return their calls. He&apos;s an ex IBM engineer, led
             an AI education initiative at Google HQ, and has shipped agentic
             systems, token launches and production platforms with combined
             value well past $5M.
