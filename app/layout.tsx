@@ -69,11 +69,8 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  icons: {
-    icon: "/Luno-logo.png",
-    shortcut: "/Luno-logo.png",
-    apple: "/Luno-logo.png",
-  },
+  // Favicon / app icons are provided by the App Router file conventions:
+  // app/favicon.ico, app/icon.png, app/apple-icon.png (all the Luno Labs mark).
 };
 
 export default function RootLayout({

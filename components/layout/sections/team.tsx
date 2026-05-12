@@ -19,8 +19,9 @@ const FACTS: Fact[] = [
     k: "Track record",
     v: (
       <>
-        3 token launches, <span className="italic text-sprout">$5M+</span>{" "}
-        shipped
+        40+ builds{" "}
+        <span className="italic text-sprout">shipped and live</span>
+        , from booking flows and brand sites to internal tools and classrooms.
       </>
     ),
   },
@@ -89,9 +90,9 @@ export const TeamSection = () => {
             Sami started Luno Labs in 2022 because too many small businesses
             were being sold software they didn&apos;t need by people who
             wouldn&apos;t return their calls. He&apos;s an ex IBM engineer, led
-            an AI education initiative at Google HQ, and has shipped agentic
-            systems, token launches and production platforms with combined
-            value well past $5M.
+            an AI education initiative at Google HQ, and has shipped 40+
+            production builds for teams who needed calm, reliable software that
+            still runs long after launch day.
           </p>
           <p className="text-[17px] leading-relaxed text-ink/85 max-w-[580px]">
             But mostly he just likes building <em>useful</em> things for people
